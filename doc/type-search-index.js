@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"SignMagnitudeIntegers"},{"p":"<Unnamed>","l":"SignMagnitudeIntegers2"},{"p":"<Unnamed>","l":"UnsignedIntegers"}];updateSearchResults();
