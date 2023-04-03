@@ -1,6 +1,5 @@
 package Debug;
 import javax.swing.*;
-import java.util.*;
 
 class UnsignedIntegersDebug {
     public static void main(String Args[]) {
