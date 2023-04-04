@@ -88,3 +88,6 @@ try{
 
         // String Builder breaks down mulitple little strings e.g sb.append = group ,
          // sb.append = two. and compile them into one whole string acting as a buffer : String Result = sb.toString();
+
+
+         << is a left shift operator shifting it by 1 in this case.

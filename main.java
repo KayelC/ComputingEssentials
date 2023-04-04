@@ -8,31 +8,44 @@ public class main extends JFrame implements ActionListener{
     private JButton button2;
     private JButton button3;
     private JButton button4;
+    private JButton button5;
+    private JButton button6;
 
     public main() {
         super("Main Menu");
         
         // Create buttons
         button1 = new JButton("Unsigned Integers");
-        button2 = new JButton("Sign+Magnitude");
+        button2 = new JButton("Binary Coded Decimal");
         button3 = new JButton("2's Complement");
-        button4 = new JButton("Binary Coded Decimal");
+        button4 = new JButton("Sign+Magnitude");
+        button5 = new JButton("2's Complement Ranges");
+        button6 = new JButton("Sign+Magnitude Ranges");
 
         // Set action listeners for buttons
         button1.addActionListener(this);
         button2.addActionListener(this);
         button3.addActionListener(this);
         button4.addActionListener(this);
-
-        // Add buttons to the frame
-        getContentPane().setLayout(new FlowLayout());
-        getContentPane().add(button1);
-        getContentPane().add(button2);
-        getContentPane().add(button3);
-        getContentPane().add(button4);
+        button5.addActionListener(this);
+        button6.addActionListener(this); 
         
+        // Create a nested panel with a margin of 10 pixels around the buttons
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 5));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
+        buttonPanel.add(button1);
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+        buttonPanel.add(button4);
+        buttonPanel.add(button5);
+        buttonPanel.add(button6);
+
+        // Add the nested panel to the content pane
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
         // Set frame properties
-        setSize(330, 110);
+        setSize(400, 140);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
@@ -41,11 +54,15 @@ public class main extends JFrame implements ActionListener{
         if (e.getSource() == button1) {
             us();
         } else if (e.getSource() == button2) {
-            sm();
+            bcd();
         } else if (e.getSource() == button3) {
             c();
         } else if (e.getSource() == button4) {
-            bcd();
+            sm();
+        } else if (e.getSource() == button5) {
+            cr();
+        } else if (e.getSource() == button6) {
+            smr();
         }
     }
         private void sm(){
@@ -235,6 +252,84 @@ public class main extends JFrame implements ActionListener{
                 return bcd.toString();   
         }
 
+        private void smr(){
+            String explanation, explanation2, explanation3, explanation4;
+
+        explanation  = "Ranges refer to the set of values that can be represented by a particular data type or number system.\nIn computer programming, ranges are often used to determine the valid input values for a variable or to define the limits of a computation.";
+        explanation2 = "To Calculate The Range of a Sign+Magnitude Representation we must to the following :";
+        explanation3 = "Determine the number of bits used to represent the value. \n 4-bits";
+        explanation4 = "Calculate the minimum and maximum values. \n+/- 4 2 1\n1   1 1 1 = -7\n0   1 1 1 = +7";
+        
+        JOptionPane.showMessageDialog(null, explanation, "Sign+Magnitude Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation2, "Sign+Magnitude Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation3, "Sign+Magnitude Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation4, "Sign+Magnitude Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        while (true) {
+            // Read decimal input from the user
+            String input = JOptionPane.showInputDialog(null, "Enter The Number of Bits in the Representation :");
+
+            if (input == null || input.equalsIgnoreCase("q")) {
+            JOptionPane.showMessageDialog(null, "Operation Cancelled");
+            break;
+            }
+
+            // Convert input string to integer
+            int bits;
+            try {
+            bits = Integer.parseInt(input);
+            }   catch (NumberFormatException e) { 
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
+            continue;
+            }
+            // Calculate the maximum and minimum values
+            int maxValue = (int) Math.pow(2, bits - 1) - 1;  // maximum value is 2^(bits - 1) - 1
+            int minValue = -(int) Math.pow(2, bits - 1) + 1; // minimum value is -(2^(bits - 1)) + 1
+            
+            JOptionPane.showMessageDialog(null, "Range of values in " + bits + "-bit Sign+Magnitude: \nMinimum value: "+ minValue + "\nMaximum value: "+ maxValue);
+        }
+    }
+
+        private void cr(){
+            String explanation, explanation2, explanation3, explanation4, explanation5, explanation6;
+
+        explanation  = "Ranges refer to the set of values that can be represented by a particular data type or number system.\nIn computer programming, ranges are often used to determine the valid input values for a variable or to define the limits of a computation.";
+        explanation2 = "To Calculate The Range of a 2's Complement Representation we must to the following :";
+        explanation3 = "Step 1 : Calculate 2 to the power of the number of bits you have. \n2^8 = 256";
+        explanation4 = "Step 2 : Find the negative range by halving the answer. \n 256/2 = 128";
+        explanation5 = "Step 3 : This means we have the range of: \n-128 to +128";
+        explanation6 = "Step 4 : We need to take account the number 0 in our calculation, simply subtract 1 from the positive side.\n Our new answer is : -128 to +127";
+
+        JOptionPane.showMessageDialog(null, explanation, "2's Complement Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation2, "2's Complement Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation3, "2's Complement Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation4, "2's Complement Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation5, "2's Complement Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation6, "2's Complement Ranges Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+        while (true) {
+            // Read decimal input from the user
+            String input = JOptionPane.showInputDialog(null, "Enter The Number of Bits in the Representation :");
+
+            if (input == null || input.equalsIgnoreCase("q")) {
+            JOptionPane.showMessageDialog(null, "Operation Cancelled");
+            break;
+            }
+
+            // Convert input string to integer
+            int bits;
+            try {
+            bits = Integer.parseInt(input);
+            }   catch (NumberFormatException e) { 
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
+            continue;
+            }
+
+            int minValue = -(1 << (bits - 1)); // minimum value that can be represented 
+            int maxValue = (1 << (bits - 1)) - 1; // maximum value that can be represented
+
+            JOptionPane.showMessageDialog(null, "Range of values in " + bits + "-bit 2's complement: \nMinimum value: "+ minValue + "\nMaximum value: "+ maxValue);
+        } 
+    }
         public static void main (String[] args){
             main menu = new main();
             menu.setVisible(true);
@@ -243,3 +338,10 @@ public class main extends JFrame implements ActionListener{
 }
 
 // Kayel Calleja
+
+//sm  = Sign and Magnitude
+//us  = Unsigned
+//c   = 2's Complement
+//bcd = Binary Coded Decimal
+//smr = Sign and Magnitude Ranges
+//cr  = 2's Complement Ranges
