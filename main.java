@@ -7,6 +7,7 @@ public class main extends JFrame implements ActionListener{
     private JButton button1;
     private JButton button2;
     private JButton button3;
+    private JButton button4;
 
     public main() {
         super("Main Menu");
@@ -15,20 +16,23 @@ public class main extends JFrame implements ActionListener{
         button1 = new JButton("Unsigned Integers");
         button2 = new JButton("Sign+Magnitude");
         button3 = new JButton("2's Complement");
+        button4 = new JButton("Binary Coded Decimal");
 
         // Set action listeners for buttons
         button1.addActionListener(this);
         button2.addActionListener(this);
         button3.addActionListener(this);
+        button4.addActionListener(this);
 
         // Add buttons to the frame
         getContentPane().setLayout(new FlowLayout());
         getContentPane().add(button1);
         getContentPane().add(button2);
         getContentPane().add(button3);
+        getContentPane().add(button4);
         
         // Set frame properties
-        setSize(300, 110);
+        setSize(330, 110);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
@@ -38,8 +42,10 @@ public class main extends JFrame implements ActionListener{
             us();
         } else if (e.getSource() == button2) {
             sm();
-        } else if (e.getSource()== button3) {
+        } else if (e.getSource() == button3) {
             c();
+        } else if (e.getSource() == button4) {
+            bcd();
         }
     }
         private void sm(){
@@ -177,10 +183,63 @@ public class main extends JFrame implements ActionListener{
                 }
             }
         }
-        
+                private void bcd(){
+                    String explanation, explanation2, explanation3, explanation4;
+
+        explanation  = "BCD stands for Binary-Coded Decimal, which is a way of representing decimal digits using a binary code.\nIn BCD, each decimal digit is represented by a four-bit binary code, which can take on values from 0000 to 1001.";
+        explanation2 = "For example, the decimal number 57 would be represented in BCD as 0101 0111,\nwhere the first four bits (0101) represent the digit 5 and the second four bits (0111) represent the digit 7.";
+        explanation3 = "BCD is based on the idea of representing each decimal digit as a binary number.\nSince there are 10 possible values for a decimal digit (0-9), it requires four bits to represent each digit, because four bits can represent 16 possible values.\nTherefore, in BCD, each decimal digit is represented by a unique four-bit code, with no overlap between codes.";
+        explanation4 = "One potential drawback of BCD is that it requires more storage space than traditional binary representation.\nFor example, a 16-bit binary number can represent values up to 65535, while a 16-bit BCD number can only represent values up to 9999.\nHowever, for applications that require precise decimal arithmetic or easy human readability, BCD can be a useful encoding scheme.";
+
+        JOptionPane.showMessageDialog(null, explanation, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation2, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation3, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanation4, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+        while (true) {
+            // Read decimal input from the user
+            String input = JOptionPane.showInputDialog(null, "Please Enter an Integer:");
+
+            if (input == null || input.equalsIgnoreCase("q")) {
+                JOptionPane.showMessageDialog(null, "Operation Cancelled");
+                break;
+            }
+
+            // Convert input string to integer
+            int decimal;
+            try {
+                decimal = Integer.parseInt(input);
+            } catch (NumberFormatException e) { 
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
+                continue;
+            }
+
+            // Convert decimal to BCD and display the result
+            String bcd = decimalToBCD(decimal);
+            JOptionPane.showMessageDialog(null, "BCD binary value: " + bcd);
+        } 
+    }
+            public static String decimalToBCD(int decimal){
+                StringBuilder bcd = new StringBuilder();
+         
+                while (decimal > 0){
+                int digit = decimal % 10;
+                String binary = String.format("%04d", Integer.parseInt(Integer.toBinaryString(digit)));
+                bcd.insert(0, binary);
+                decimal /= 10;
+            }
+                // Split the BCD representation into groups of four digits
+                for (int i = bcd.length() - 4; i > 0; i -= 4) {
+                bcd.insert(i," ");
+            }  
+                return bcd.toString();   
+        }
+
         public static void main (String[] args){
             main menu = new main();
             menu.setVisible(true);
             
         }
 }
+
+// Kayel Calleja

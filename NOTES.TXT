@@ -62,3 +62,29 @@ try{
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter the correct value."); //eg with joptionpane
                 continue;
             }
+
+                       ################
+    ###################                ###################
+    #                   Modulo Operator                  #
+    ###################                ###################
+                       ################
+
+                *The modulo operator % is a mathematical operator that calculates the remainder of dividing one number by another.
+                 In Java and many other programming languages, the modulo operator is represented by the percent sign %.
+
+                 Here's an example:
+
+                int a = 10;
+                int b = 3;
+                int c = a % b;  // c = 1
+                In this example, a is divided by b, which results in a quotient of 3 with a remainder of 1.
+                The value of c is set to the remainder of this division, which is 1.
+
+                The modulo operator is often used in programming to perform tasks like checking if a number is even or odd,
+                generating random numbers within a range, or cycling through a sequence of values.
+
+                 By taking the remainder of the decimal value divided by 10, the method extracts the digit in the ones place. For example,
+                  if the decimal value is 1234, taking 1234 % 10 would result in a value of 4, which is the last digit.
+
+        // String Builder breaks down mulitple little strings e.g sb.append = group ,
+         // sb.append = two. and compile them into one whole string acting as a buffer : String Result = sb.toString();
