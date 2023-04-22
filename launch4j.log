@@ -1,0 +1,36 @@
+
+
+Version:	3.50
+CmdLine:	C:\Java Projects\ComputingPresentation\ComputingEssentials.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Java Projects\ComputingPresentation\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+JRE paths:	C:\Program Files\Java\jre1.8.0_361
+Check launcher:	C:\Program Files\Java\jre1.8.0_361\bin\javaw.exe (OK)
+Version string: 1.008.000_361 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jre1.8.0_361\bin\javaw.exe
+Launcher args:	-jar "C:\Java Projects\ComputingPresentation\ComputingEssentials.exe"
+Args length:	69/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Java Projects\ComputingPresentation\ComputingEssentials.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Java Projects\ComputingPresentation\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+JRE paths:	C:\Program Files\Java\jdk-20
+Check launcher:	C:\Program Files\Java\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jdk-20\bin\javaw.exe
+Launcher args:	-jar "C:\Java Projects\ComputingPresentation\ComputingEssentials.exe"
+Args length:	69/32768 chars
+Exit code:	0

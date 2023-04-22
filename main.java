@@ -2,7 +2,292 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class main extends JFrame implements ActionListener{
+
+public class Main extends JFrame implements ActionListener{
+
+    private JButton binaryS;
+    private SubMenuBS subMenuBS;
+    private JButton booleanA;
+    private SubMenuBA subMenuBA;
+
+    public Main() {
+        super("Main Menu");
+
+        binaryS = new JButton("Binary Systems");
+        binaryS.addActionListener(this);
+
+        booleanA = new JButton("Boolean Algebra");
+        booleanA.addActionListener(this);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 1, 10, 5));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+        buttonPanel.add(binaryS);
+        buttonPanel.add(booleanA);
+
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+        setSize(400, 140);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == binaryS) {
+            subMenuBS = new SubMenuBS();
+            subMenuBS.setVisible(true);
+        } else if (e.getSource() == booleanA) {
+            subMenuBA = new SubMenuBA();
+            subMenuBA.setVisible(true);
+        }
+    }
+
+class SubMenuBA extends JFrame implements ActionListener{
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
+    private JButton button6;
+    private JButton button7;
+    private JButton button8;
+    private JButton button9;
+    private JButton button10;
+
+    public SubMenuBA() {
+        super("Boolean Algebra Menu");
+
+         // Create buttons
+         button1 = new JButton("Identity");
+         button2 = new JButton("Idempotent");
+         button3 = new JButton("Complement");
+         button4 = new JButton("Commutative");
+         button5 = new JButton("Double Negation");
+         button6 = new JButton("De Morgan's");
+         button7 = new JButton("Distributive");
+         button8 = new JButton("Absorptive");
+         button9 = new JButton("Associative");
+         button10 = new JButton("Tautology");
+
+         // Set action listeners for buttons
+         button1.addActionListener(this);
+         button2.addActionListener(this);
+         button3.addActionListener(this);
+         button4.addActionListener(this);
+         button5.addActionListener(this);
+         button6.addActionListener(this);
+         button7.addActionListener(this); 
+         button8.addActionListener(this); 
+         button9.addActionListener(this); 
+         button10.addActionListener(this);  
+         
+         // Create a nested panel with a margin of 10 pixels around the buttons
+         JPanel buttonPanel = new JPanel(new GridLayout(5, 2, 10, 5));
+         buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
+         buttonPanel.add(button1);
+         buttonPanel.add(button2);
+         buttonPanel.add(button3);
+         buttonPanel.add(button4);
+         buttonPanel.add(button5);
+         buttonPanel.add(button6);
+         buttonPanel.add(button7);
+         buttonPanel.add(button8);
+         buttonPanel.add(button9);
+         buttonPanel.add(button10);
+ 
+         // Add the nested panel to the content pane
+         getContentPane().setLayout(new BorderLayout());
+         getContentPane().add(buttonPanel, BorderLayout.CENTER);
+ 
+         // Set frame properties
+         setSize(400, 200);
+         setLocationRelativeTo(null);
+    }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == button1) {
+            identity();
+        } else if (e.getSource() == button2) {
+            indepotent();
+        } else if (e.getSource() == button3) {
+            complement();
+        } else if (e.getSource() == button4) {
+            commutative();
+        } else if (e.getSource() == button5) {
+            doublenegation();
+        } else if (e.getSource() == button6) {
+            demorgan();
+        } else if (e.getSource() == button7) {
+            distributive();
+        } else if (e.getSource() == button8) {
+            absorption();
+        } else if (e.getSource() == button9) {
+            associative();
+        } else if (e.getSource() == button10) {
+            tautology();
+        }
+  }
+}
+    private void identity(){
+        String statement, explanationOR, exampleOR, explanationAND,  exampleAND; 
+        
+        statement = "If a statement has been determined to be true, then the statement is true.";
+
+        // OR GATE
+        explanationOR = "The OR operation with a 'true' or '1' value results in a 'true' or '1', and the OR operation with a 'false' or '0' value results in the original value";
+        exampleOR = "A + 1 = 1 (Nullification Law)\nA + 0 = A";
+
+        // AND GATE
+        explanationAND = "The AND operation with a 'true' or '1' value results in the original value, and the AND operation with a 'false' or '0' value results in 'false' or '0'";
+        exampleAND = "A . 1 = A\nA . 0 = 0 (Nullification Law)";
+
+        JOptionPane.showMessageDialog(null, statement, "Identity Law", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(null, explanationOR, "Identity Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleOR, "Identity Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(null, explanationAND, "Identity Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleAND, "Identity Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void indepotent(){
+        String statement, example;
+        
+        statement = "An input that is AND'ed or OR'ed with itself is that input";
+        example = "A + A = A\n A . A = A";
+
+        JOptionPane.showMessageDialog(null, statement, "Idepotent Law", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, example, "Idepotent Law", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void complement(){
+        String statement, explanationOR, exampleOR, explanationAND,  exampleAND; 
+        
+        statement = "The Complement is the inverse of a variable and is indicated by a bar over the variable as /Variable or in brackets as (NOT Variable)";
+
+        // OR GATE
+        explanationOR = "A term OR'ed with its complement equals '1'";
+        exampleOR = "A + (NOT A) = 1";
+
+        // AND GATE
+        explanationAND = "A term AND'ed with its complement equals '0'";
+        exampleAND = "A . (NOT A) = 0";
+
+        JOptionPane.showMessageDialog(null, statement, "Complement Law", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(null, explanationOR, "Complement Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleOR, "Complement Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(null, explanationAND, "Complement Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleAND, "Complement Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void commutative(){
+        String statement, example;
+
+        statement = "The order of application of two separate terms is not important";
+        example = "A . B = B . A\n A + B = B + A";
+
+        JOptionPane.showMessageDialog(null, statement, "Commutative Law", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, example, "Commutative Law", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void doublenegation(){
+        String statement, example;
+
+        statement = "A term that is inverted twice is equal to the original term";
+        example = "//A = A\n NOT(/A) = A";
+
+        JOptionPane.showMessageDialog(null, statement, "Double Negation Law", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, example, "Double Negation Law", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void demorgan(){
+        String statement, exampleOR, explanationOR, explanationAND, exampleAND;
+        
+        statement = "DeMorgan's Theorems describe the equivalence between gates with inverted inputs and gates with inverted outputs.";
+
+        explanationOR = "Two separate terms NOR'ed together is the same as the two terms inverted(Complemented) and AND'ed";
+        exampleOR = "(NOT A+B) = (NOT A) . (NOT B)";
+
+        explanationAND = "Two separate terms NAND'ed together is the same as the two terms inverted(Complemented) and OR'ed";
+        exampleAND = "(NOT A.B) = (NOT A) + (NOT B)";
+
+        JOptionPane.showMessageDialog(null, statement, "De Morgan's Law", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanationOR, "De Morgan's Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleOR, "De Morgan's Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, explanationAND, "De Morgan's Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleAND, "De Morgan's Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void distributive(){
+        String statement, exampleOR, exampleAND;
+        
+        statement = "Distributive Law permits the multiplying or factoring out of an expression.";
+
+        exampleOR = "A(B + C) = A . B + A . C";
+
+        exampleAND = "A+(B . C) = (A + B) . (A + C)";
+
+        JOptionPane.showMessageDialog(null, statement, "Distributive Law", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleOR, "Distributive Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleAND, "Distributive Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void absorption(){
+        String statement, exampleOR, exampleAND;
+        
+    statement = "Absorption Law enables a reduction in a complicated expression to a simpler one by absorbing like terms.";
+
+    exampleOR = "A + (A . B) = (A . 1) + (A . B) = A (1 . B ) = A";
+
+    exampleAND = "A (A + B) = (A + 0) . (A + B) = A + (0 . B) = A";
+
+    JOptionPane.showMessageDialog(null, statement, "Absorption Law", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, exampleOR, "Absorption Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, exampleAND, "Absorption Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void associative(){
+        String statement, exampleOR, exampleAND;
+            
+        statement = "Associative law allows the removal of brackets from an expression and regrouping of the variables";
+    
+        exampleOR = "A + (B + C) = (A + B) + C = A + B + C";
+    
+        exampleAND = "A (B . C) = (A . B) C = A . B . C ";
+    
+        JOptionPane.showMessageDialog(null, statement, "Associative Law", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleOR, "Associative Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, exampleAND, "Associative Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void tautology(){
+        String[] messages = {
+            "While not Boolean Laws in their own right, these are a set of Mathematical Laws which can be used in the simplification of Boolean Expressions.",
+            "0 . 0 = 0\nA 0 AND'ed with itself is always equal to 0",
+            "1 . 1 = 1\nA 1 AND'ed with itself is always equal to 1",
+            "1 . 0 = 0\nA 1 AND'ED with a 0 is equal to 0",
+            "0 + 0 = 0\nA 0 OR'ed with itself is always equal to 0",
+            "1 + 1 = 1\nA 1 OR'ed with itself is always equal to 1",
+            "1 + 0 = 1\nA 1 OR'ed with a 0 is equal to 1",
+            "/1 = 0\nThe Inverse(Complement) of a 1 is always equal to 0",
+            "/0 = 1\nThe Inverse(Complement) of a 0 is always equal to 1"
+    };
+    String title = "Tautology";
+    int index = 0;
+    while (index < messages.length) {
+        int option = JOptionPane.showOptionDialog(null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"🡢", "🡠"}, "Next");
+        if (option == JOptionPane.CLOSED_OPTION) {
+            // User closed the dialog, exit the loop
+            break;
+        } else if (option == 0) {
+            index++;
+        } else if (option == 1 && index > 0) {
+            index--;
+        }
+    }
+    }
+class SubMenuBS extends JFrame implements ActionListener{
     
     private JButton button1;
     private JButton button2;
@@ -11,8 +296,8 @@ public class main extends JFrame implements ActionListener{
     private JButton button5;
     private JButton button6;
 
-    public main() {
-        super("Main Menu");
+    public SubMenuBS() {
+        super("Binary Systems Menu");
         
         // Create buttons
         button1 = new JButton("Unsigned Integers");
@@ -46,7 +331,6 @@ public class main extends JFrame implements ActionListener{
 
         // Set frame properties
         setSize(400, 140);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
     
@@ -65,6 +349,7 @@ public class main extends JFrame implements ActionListener{
             smr();
         }
     }
+}
         private void sm(){
         String explanation,explanation2,explanation3,explanation4,explanation5;
         
@@ -330,14 +615,24 @@ public class main extends JFrame implements ActionListener{
             JOptionPane.showMessageDialog(null, "Range of values in " + bits + "-bit 2's complement: \nMinimum value: "+ minValue + "\nMaximum value: "+ maxValue);
         } 
     }
-        public static void main (String[] args){
-            main menu = new main();
-            menu.setVisible(true);
-            
+        
+        public static void main(String[] args){
+            Main mainMenu = new Main();
+            mainMenu.setVisible(true);
         }
-}
-
+    }
 // Kayel Calleja
+
+//identity = Identity Law
+//idempotent = Indepontent Law
+//complement = Completement Law
+//commutative = Commutative Law
+//doublenegation = Double Negation Law
+//demorgan = De Morgan's Law
+//distributive = Law of Distribution
+//absorptive = Law of Absorption
+//associative = Law of Association
+//tautology = Methods of Tautology
 
 //sm  = Sign and Magnitude
 //us  = Unsigned
