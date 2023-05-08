@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class Main extends JFrame implements ActionListener{
+public class main extends JFrame implements ActionListener{
 
     private JButton binaryS;
     private SubMenuBS subMenuBS;
     private JButton booleanA;
     private SubMenuBA subMenuBA;
 
-    public Main() {
+    public main() {
         super("Main Menu");
 
         binaryS = new JButton("Binary Systems");
@@ -485,46 +485,110 @@ class SubMenuBS extends JFrame implements ActionListener{
                 }
             }
         }
-                private void bcd(){
+        private void bcd(){
                     String explanation, explanation2, explanation3, explanation4;
 
-        explanation  = "BCD stands for Binary-Coded Decimal, which is a way of representing decimal digits using a binary code.\nIn BCD, each decimal digit is represented by a four-bit binary code, which can take on values from 0000 to 1001.";
-        explanation2 = "For example, the decimal number 57 would be represented in BCD as 0101 0111,\nwhere the first four bits (0101) represent the digit 5 and the second four bits (0111) represent the digit 7.";
-        explanation3 = "BCD is based on the idea of representing each decimal digit as a binary number.\nSince there are 10 possible values for a decimal digit (0-9), it requires four bits to represent each digit, because four bits can represent 16 possible values.\nTherefore, in BCD, each decimal digit is represented by a unique four-bit code, with no overlap between codes.";
-        explanation4 = "One potential drawback of BCD is that it requires more storage space than traditional binary representation.\nFor example, a 16-bit binary number can represent values up to 65535, while a 16-bit BCD number can only represent values up to 9999.\nHowever, for applications that require precise decimal arithmetic or easy human readability, BCD can be a useful encoding scheme.";
+            explanation  = "BCD stands for Binary-Coded Decimal, which is a way of representing decimal digits using a binary code.\nIn BCD, each decimal digit is represented by a four-bit binary code, which can take on values from 0000 to 1001.";
+            explanation2 = "For example, the decimal number 57 would be represented in BCD as 0101 0111,\nwhere the first four bits (0101) represent the digit 5 and the second four bits (0111) represent the digit 7.";
+            explanation3 = "BCD is based on the idea of representing each decimal digit as a binary number.\nSince there are 10 possible values for a decimal digit (0-9), it requires four bits to represent each digit, because four bits can represent 16 possible values.\nTherefore, in BCD, each decimal digit is represented by a unique four-bit code, with no overlap between codes.";
+            explanation4 = "One potential drawback of BCD is that it requires more storage space than traditional binary representation.\nFor example, a 16-bit binary number can represent values up to 65535, while a 16-bit BCD number can only represent values up to 9999.\nHowever, for applications that require precise decimal arithmetic or easy human readability, BCD can be a useful encoding scheme.";
 
-        JOptionPane.showMessageDialog(null, explanation, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, explanation2, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, explanation3, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, explanation4, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, explanation, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, explanation2, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, explanation3, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, explanation4, "Binary Coded Decimal Explanation", JOptionPane.INFORMATION_MESSAGE);
 
-        while (true) {
+        
+            while (true) {
+                String choice = JOptionPane.showInputDialog(null, "Please choose an option:\n1. Example Integer\n2. Addition");
+
+                if (choice == null || choice.equalsIgnoreCase("q")) {
+                    JOptionPane.showMessageDialog(null, "Operation Cancelled");
+                    break;
+                }
+
+                if (choice.equals("1")) {
+                    exampleInteger();
+                } else if (choice.equals("2")) {
+                    performAddition();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid choice. Please enter '1', '2'.");
+                }
+            }
+        }
+
+        public static void performAddition() {
+            while (true) {
+                String input1 = JOptionPane.showInputDialog(null, "Please Enter the First Integer:");
+
+                if (input1 == null || input1.equalsIgnoreCase("q")) {
+                    JOptionPane.showMessageDialog(null, "Operation Cancelled");
+                    break;
+                }
+
+                // Convert the first input string to an integer
+                int firstInt;
+                try {
+                    firstInt = Integer.parseInt(input1);
+                 } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
+                    continue;
+                }
+
+                // Prompt the user to enter the second integer
+                String input2 = JOptionPane.showInputDialog(null, "Please Enter the Second Integer:");
+
+                if (input2 == null || input2.equalsIgnoreCase("q")) {
+                    JOptionPane.showMessageDialog(null, "Operation Cancelled");
+                    break;
+                }
+
+                // Convert the second input string to an integer
+                int secondInt;
+                try {
+                    secondInt = Integer.parseInt(input2);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
+                    continue;
+                }
+
+                // Perform BCD addition
+                int sum = firstInt + secondInt;
+
+                // Convert decimal sum to BCD and display the result
+                String bcd2 = decimalToBCD(sum);
+                JOptionPane.showMessageDialog(null, "BCD binary value of sum: " + bcd2);
+            }
+        }
+    
+        public static void exampleInteger() {
             // Read decimal input from the user
-            String input = JOptionPane.showInputDialog(null, "Please Enter an Integer:");
+            String input = JOptionPane.showInputDialog(null, "Please Enter an example Integer:");
 
             if (input == null || input.equalsIgnoreCase("q")) {
                 JOptionPane.showMessageDialog(null, "Operation Cancelled");
-                break;
+                return;
             }
 
             // Convert input string to integer
             int decimal;
             try {
                 decimal = Integer.parseInt(input);
-            } catch (NumberFormatException e) { 
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
-                continue;
+                return;
             }
 
             // Convert decimal to BCD and display the result
             String bcd = decimalToBCD(decimal);
             JOptionPane.showMessageDialog(null, "BCD binary value: " + bcd);
-        } 
-    }
-            public static String decimalToBCD(int decimal){
-                StringBuilder bcd = new StringBuilder();
+        }
+
+
+        public static String decimalToBCD(int decimal){
+            StringBuilder bcd = new StringBuilder();
          
-                while (decimal > 0){
+            while (decimal > 0){
                 int digit = decimal % 10;
                 String binary = String.format("%04d", Integer.parseInt(Integer.toBinaryString(digit)));
                 bcd.insert(0, binary);
@@ -617,7 +681,7 @@ class SubMenuBS extends JFrame implements ActionListener{
     }
         
         public static void main(String[] args){
-            Main mainMenu = new Main();
+            main mainMenu = new main();
             mainMenu.setVisible(true);
         }
     }
