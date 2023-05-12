@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class main extends JFrame implements ActionListener{
+public class Main extends JFrame implements ActionListener{
 
     private JButton binaryS;
     private SubMenuBS subMenuBS;
     private JButton booleanA;
     private SubMenuBA subMenuBA;
 
-    public main() {
+    public Main() {
         super("Main Menu");
 
         binaryS = new JButton("Binary Systems");
@@ -681,7 +681,7 @@ class SubMenuBS extends JFrame implements ActionListener{
     }
         
         public static void main(String[] args){
-            main mainMenu = new main();
+            Main mainMenu = new Main();
             mainMenu.setVisible(true);
         }
     }
