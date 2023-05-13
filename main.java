@@ -500,7 +500,7 @@ class SubMenuBS extends JFrame implements ActionListener{
 
         
             while (true) {
-                String choice = JOptionPane.showInputDialog(null, "Please choose an option:\n1. Example Integer\n2. Addition");
+                String choice = JOptionPane.showInputDialog(null, "Please choose an option:\n1. Check Integer\n2. Addition");
 
                 if (choice == null || choice.equalsIgnoreCase("q")) {
                     JOptionPane.showMessageDialog(null, "Operation Cancelled");
