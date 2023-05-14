@@ -1,16 +1,17 @@
+package Old;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 
-public class Main extends JFrame implements ActionListener{
+public class Mainold extends JFrame implements ActionListener{
 
     private JButton binaryS;
     private SubMenuBS subMenuBS;
     private JButton booleanA;
     private SubMenuBA subMenuBA;
 
-    public Main() {
+    public Mainold() {
         super("Main Menu");
 
         binaryS = new JButton("Binary Systems");
@@ -681,7 +682,7 @@ class SubMenuBS extends JFrame implements ActionListener{
     }
         
         public static void main(String[] args){
-            Main mainMenu = new Main();
+            Mainold mainMenu = new Mainold();
             mainMenu.setVisible(true);
         }
     }
