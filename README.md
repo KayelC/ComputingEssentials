@@ -2,5 +2,11 @@
 Application For Computing Revision
 
 
-Main.java has the source code for the program, other files are part of the package or used as templates to work on.
+Rework.java is the new source file, 
+it is a port of the previous main.java which had all the functions bundled into one button.
 
+the new Rework.java source file has a user-friendly design with each function assigned its own button.
+
+// TODO
+
++ Examples To Work Out
