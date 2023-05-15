@@ -102,7 +102,7 @@ public class Rework extends JFrame implements ActionListener{
                     String explanation, explanation2, explanation3, explanation4;
 
                     explanation  = "Ranges refer to the set of values that can be represented by a particular data type or number system.\nIn computer programming, ranges are often used to determine the valid input values for a variable or to define the limits of a computation.";
-                    explanation2 = "To Calculate The Range of a Sign+Magnitude Representation we must to the following :";
+                    explanation2 = "To Calculate The Range of a Sign+Magnitude Representation we must do the following :";
                     explanation3 = "Determine the number of bits used to represent the value. \n 4-bits";
                     explanation4 = "Calculate the minimum and maximum values. \n+/- 4 2 1\n1   1 1 1 = -7\n0   1 1 1 = +7";
 
