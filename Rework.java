@@ -140,13 +140,79 @@ public class Rework extends JFrame implements ActionListener{
                 }
             }
         }
+        
+        class SubMenuSMW extends JFrame implements ActionListener {
+        private JButton question1;
+        private JButton question2;
+
+        public SubMenuSMW() {
+            super("Sign + Magnitude Examples Menu");
+
+            question1 = new JButton("Question 1.");
+            question1.addActionListener(this);
+
+            question2 = new JButton("Question 2.");
+            question2.addActionListener(this);
+
+            JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
+            buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+            buttonPanel.add(question1);
+            buttonPanel.add(question2);
+
+            getContentPane().setLayout(new BorderLayout());
+            getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+            setSize(400, 140);
+            setLocationRelativeTo(null);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == question1) {
+                JOptionPane.showMessageDialog(null, "What is the Sign + Magnitude Representation of 33?");
+                int decimal = 33;
+                // Determine the sign and magnitude of the number
+                int sign = (decimal < 0) ? 1 : 0;
+                int magnitude = Math.abs(decimal);
+
+                // Convert magnitude to binary string
+                String binary = Integer.toBinaryString(magnitude);
+
+                // Pad binary string with leading zeros to ensure it has 8 bits
+                binary = String.format("%7s", binary).replace(' ', '0');
+
+                // Output the sign and binary representation of magnitude
+                JOptionPane.showMessageDialog(null, "Sign-Magnitude: " + sign + binary);
+                JOptionPane.showMessageDialog(null, "Sign: " + sign + "\nMagnitude: " + binary);
+            } else if (e.getSource() == question2) {
+                JOptionPane.showMessageDialog(null, "What is the Sign + Magnitude Representation of -78?");
+                int decimal = -78;
+                // Determine the sign and magnitude of the number
+                int sign = (decimal < 0) ? 1 : 0;
+                int magnitude = Math.abs(decimal);
+
+                // Convert magnitude to binary string
+                String binary = Integer.toBinaryString(magnitude);
+
+                // Pad binary string with leading zeros to ensure it has 8 bits
+                binary = String.format("%7s", binary).replace(' ', '0');
+
+                // Output the sign and binary representation of magnitude
+                JOptionPane.showMessageDialog(null, "Sign-Magnitude: " + sign + binary);
+                JOptionPane.showMessageDialog(null, "Sign: " + sign + "\nMagnitude: " + binary);
+            }
+        }
+    }
+    
         class SubMenuSM extends JFrame implements ActionListener{
             private JButton explanation;
             private JButton checkinteger;
-            
+
             private JButton innerCSMR;
             private SubMenuSMR subMenuSMR;
-
+            
+            private JButton worksheet;
+            private SubMenuSMW subMenuSMW;
+            
             public SubMenuSM() {
                 super("Sign + Magnitude Menu");
 
@@ -159,11 +225,14 @@ public class Rework extends JFrame implements ActionListener{
                 innerCSMR = new JButton("Ranges");
                 innerCSMR.addActionListener(this);
 
+                worksheet = new JButton("Examples To Work Out");
+                worksheet.addActionListener(this);
+                
                 JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
                 buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
                 buttonPanel.add(explanation);
                 buttonPanel.add(checkinteger);
-
+                buttonPanel.add(worksheet);
                 buttonPanel.add(innerCSMR);
 
                 getContentPane().setLayout(new BorderLayout());
@@ -223,17 +292,117 @@ public class Rework extends JFrame implements ActionListener{
 
                     }
                 }   else if (e.getSource() == innerCSMR) {
-                        subMenuSMR = new SubMenuSMR();
-                        subMenuSMR.setVisible(true);
-                } 
-
+                    subMenuSMR = new SubMenuSMR();
+                    subMenuSMR.setVisible(true);
+                } else if (e.getSource() == worksheet) {
+                    subMenuSMW = new SubMenuSMW();
+                    subMenuSMW.setVisible(true);
+                }
             }
         }
+
+        class SubMenuUSW extends JFrame implements ActionListener{
+            private JButton question1;
+            private JButton question2;
+            private JButton question3;
+            public SubMenuUSW(){
+                super("Unsigned Integers Examples Menu");
+
+                question1 = new JButton("Question 1.");
+                question1.addActionListener(this);
+
+                question2 = new JButton("Question 2.");
+                question2.addActionListener(this);
+
+                question3 = new JButton("Question 3.");
+                question3.addActionListener(this);
+
+                JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
+                buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
+                buttonPanel.add(question1);
+                buttonPanel.add(question2);
+                buttonPanel.add(question3);
+
+                getContentPane().setLayout(new BorderLayout());
+                getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                setSize(400, 140);
+                setLocationRelativeTo(null);
+            }
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == question1) {
+                    while (true) {
+                        JOptionPane.showMessageDialog(null, "Perform the sum 1 + 9 in Unsigned Binary Representation");
+                        long value1 = 1;
+                        String binary1 = String.format("%8s", Long.toBinaryString(value1)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of 1: "+binary1);
+                        long value2 = 9;
+                        String binary2 = String.format("%8s", Long.toBinaryString(value2)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of 9: "+binary2);
+                        long result;
+
+                        if (value1 + value2 > 255) {
+                            JOptionPane.showMessageDialog(null, "Overflow error. The result cannot be represented using 8 bits.");
+                            continue;
+                        }
+
+                        result = value1 + value2;
+                        String binaryResult = String.format("%8s", Long.toBinaryString(result)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of Result: " + binaryResult);
+                        break;                
+                    }
+                } else if (e.getSource() == question2) {
+                    while (true) {
+                        JOptionPane.showMessageDialog(null, "Perform the sum 32 + 8 in Unsigned Binary Representation");
+                        long value1 = 32;
+                        String binary1 = String.format("%8s", Long.toBinaryString(value1)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of 32: "+binary1);
+                        long value2 = 8;
+                        String binary2 = String.format("%8s", Long.toBinaryString(value2)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of 8: "+binary2);
+                        long result;
+
+                        if (value1 + value2 > 255) {
+                            JOptionPane.showMessageDialog(null, "Overflow error. The result cannot be represented using 8 bits.");
+                            continue;
+                        }
+
+                        result = value1 + value2;
+                        String binaryResult = String.format("%8s", Long.toBinaryString(result)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of result: " + binaryResult);
+                        break;                
+                    }
+                } else if (e.getSource() == question3) {
+                    while (true) {
+                        JOptionPane.showMessageDialog(null, "Perform the sum 255 + 1 in Unsigned Binary Representation");
+                        long value1 = 255;
+                        String binary1 = String.format("%8s", Long.toBinaryString(value1)).replace(' ', '0');
+                        long value2 = 1;
+                        String binary2 = String.format("%8s", Long.toBinaryString(value2)).replace(' ', '0');
+                        long result;
+
+                        if (value1 + value2 > 255) {
+                            JOptionPane.showMessageDialog(null, "Overflow error. The result cannot be represented using 8 bits.");
+                            break;
+                        }
+
+                        result = value1 + value2;
+                        String binaryResult = String.format("%8s", Long.toBinaryString(result)).replace(' ', '0');
+                        JOptionPane.showMessageDialog(null, "Binary of input 1: " + binary1 + "\nBinary of input 2: " + binary2 + "\nBinary of result: " + binaryResult);
+                        break;                
+                    }
+                }
+            }
+        }
+
         class SubMenuUS extends JFrame implements ActionListener{
             private JButton explanation;
             private JButton checkinteger;
             private JButton addition;
 
+            private JButton worksheet;
+            private SubMenuUSW subMenuUSW;
             public SubMenuUS() {
                 super("Unsigned Integers Menu");
 
@@ -246,11 +415,15 @@ public class Rework extends JFrame implements ActionListener{
                 addition = new JButton("Addition");
                 addition.addActionListener(this);
 
+                worksheet = new JButton("Examples To Work Out");
+                worksheet.addActionListener(this);
+
                 JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
                 buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
                 buttonPanel.add(explanation);
                 buttonPanel.add(checkinteger);
                 buttonPanel.add(addition);
+                buttonPanel.add(worksheet);
 
                 getContentPane().setLayout(new BorderLayout());
                 getContentPane().add(buttonPanel, BorderLayout.CENTER);
@@ -297,13 +470,13 @@ public class Rework extends JFrame implements ActionListener{
                             JOptionPane.showMessageDialog(null, "Operation Cancelled");
                             break;
                         }
-                        
+
                         String input2 = JOptionPane.showInputDialog("Please enter the second unsigned integer within the range of 0 - 255:");
                         if (input2 == null || input2.equalsIgnoreCase("q")) {
                             JOptionPane.showMessageDialog(null, "Operation Cancelled");
                             break;
                         }
-            
+
                         long value1, value2, result;
                         try {
                             value1 = Long.parseUnsignedLong(input1);
@@ -312,12 +485,12 @@ public class Rework extends JFrame implements ActionListener{
                             JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
                             continue;
                         }
-            
+
                         if (value1 + value2 > 255) {
                             JOptionPane.showMessageDialog(null, "Overflow error. The result cannot be represented using 8 bits.");
                             continue;
                         }
-            
+
                         String binary1 = String.format("%8s", Long.toBinaryString(value1)).replace(' ', '0');
                         String binary2 = String.format("%8s", Long.toBinaryString(value2)).replace(' ', '0');
                         result = value1 + value2;
@@ -325,13 +498,18 @@ public class Rework extends JFrame implements ActionListener{
                         JOptionPane.showMessageDialog(null, "Binary of input 1: " + binary1 + "\nBinary of input 2: " + binary2 + "\nBinary of result: " + binaryResult);
                     }
                 }
+                else if (e.getSource() == worksheet) {
+                    subMenuUSW = new SubMenuUSW();
+                    subMenuUSW.setVisible(true);
+                }
             }
         }
-    
+
         class SubMenuBCD extends JFrame implements ActionListener{
             private JButton explanation;
             private JButton checkint;
             private JButton worksheet;
+            private SubMenuBCDW subMenuBCDW;
             private JButton addition;
             public SubMenuBCD() {
                 super("Binary Coded Decimal Menu");
@@ -401,7 +579,8 @@ public class Rework extends JFrame implements ActionListener{
                     }
                 }
                 else if (e.getSource() == worksheet) {
-                    runWorksheetBcd();
+                    subMenuBCDW = new SubMenuBCDW();
+                    subMenuBCDW.setVisible(true);
                 }
                 else if (e.getSource() == addition) {
                     performAddition();
@@ -457,85 +636,107 @@ public class Rework extends JFrame implements ActionListener{
                 }
             }
 
-            public static void runWorksheetBcd() {
-                performQ1(); // +6 Rule Explanation
-                performQ2(); // E.g 2
-                performQ3(); // No Overlap Explanation
-            }
+            class SubMenuBCDW extends JFrame implements ActionListener{
+                private JButton question1;
+                private JButton question2;
+                private JButton question3;
+                public SubMenuBCDW() {
+                    super("Binary Coded Decimal Examples Menu");
 
-            public static void performQ1() {
-                JOptionPane.showMessageDialog(null, "Perform 50 + 50 in BCD:");
+                    question1 = new JButton("Question 1.");
+                    question1.addActionListener(this);
 
-                int firstInt = 50;
-                int secondInt = 50;
+                    question2 = new JButton("Question 2.");
+                    question2.addActionListener(this);
 
-                // Perform BCD addition
-                int sum = firstInt + secondInt;
+                    question3 = new JButton("Question 3.");
+                    question3.addActionListener(this);
 
-                // Convert decimal sum to BCD and display the result
-                String bcd2 = decimalToBCD(sum);
-                String bcd3 = decimalToBCD(firstInt);
-                String bcd4 = decimalToBCD(secondInt);
+                    JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
+                    buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
+                    buttonPanel.add(question1);
+                    buttonPanel.add(question2);
+                    buttonPanel.add(question3);
 
-                JOptionPane.showMessageDialog(null, "BCD value of first integer: " + bcd3);
-                JOptionPane.showMessageDialog(null, "BCD value of second integer: " + bcd4);
-                JOptionPane.showMessageDialog(null, "BCD binary value of sum: " + bcd2);
-            }
+                    getContentPane().setLayout(new BorderLayout());
+                    getContentPane().add(buttonPanel, BorderLayout.CENTER);
 
-            public static void performQ2() {
-                JOptionPane.showMessageDialog(null, "Perform 62 + 44 in BCD:");
-
-                int firstInt = 62;
-                int secondInt = 44;
-
-                // Perform BCD addition
-                int sum = firstInt + secondInt;
-
-                // Convert decimal sum to BCD and display the result
-                String bcd2 = decimalToBCD(sum);
-                String bcd3 = decimalToBCD(firstInt);
-                String bcd4 = decimalToBCD(secondInt);
-
-                JOptionPane.showMessageDialog(null, "BCD value of first integer: " + bcd3);
-                JOptionPane.showMessageDialog(null, "BCD value of second integer: " + bcd4);
-                JOptionPane.showMessageDialog(null, "BCD binary value of sum: " + bcd2);
-            }
-
-            public static void performQ3() {
-                JOptionPane.showMessageDialog(null, "Perform 77 + 56 in BCD:");
-
-                int firstInt = 77;
-                int secondInt = 56;
-
-                // Perform BCD addition
-                int sum = firstInt + secondInt;
-
-                // Convert decimal sum to BCD and display the result
-                String bcd2 = decimalToBCD(sum);
-                String bcd3 = decimalToBCD(firstInt);
-                String bcd4 = decimalToBCD(secondInt);
-
-                JOptionPane.showMessageDialog(null, "BCD value of first integer: " + bcd3);
-                JOptionPane.showMessageDialog(null, "BCD value of second integer: " + bcd4);
-                JOptionPane.showMessageDialog(null, "BCD value of sum: " + bcd2);
-            }
-
-            public static String decimalToBCD(int decimal){
-                StringBuilder bcd = new StringBuilder();
-
-                while (decimal > 0){
-                    int digit = decimal % 10;
-                    String binary = String.format("%04d", Integer.parseInt(Integer.toBinaryString(digit)));
-                    bcd.insert(0, binary);
-                    decimal /= 10;
+                    setSize(400, 140);
+                    setLocationRelativeTo(null);
                 }
 
-                // Split the BCD representation into groups of four digits
-                for (int i = bcd.length() - 4; i > 0; i -= 4) {
-                    bcd.insert(i," ");
+                public void actionPerformed(ActionEvent e){
+                    if (e.getSource() == question1) {
+                        JOptionPane.showMessageDialog(null, "Perform 50 + 50 in BCD:");
+
+                        int firstInt = 50;
+                        int secondInt = 50;
+
+                        // Perform BCD addition
+                        int sum = firstInt + secondInt;
+
+                        // Convert decimal sum to BCD and display the result
+                        String bcd2 = decimalToBCD(sum);
+                        String bcd3 = decimalToBCD(firstInt);
+                        String bcd4 = decimalToBCD(secondInt);
+
+                        JOptionPane.showMessageDialog(null, "BCD value of first integer: " + bcd3);
+                        JOptionPane.showMessageDialog(null, "BCD value of second integer: " + bcd4);
+                        JOptionPane.showMessageDialog(null, "BCD binary value of sum: " + bcd2);
+                    } else if (e.getSource() == question2) {
+                        JOptionPane.showMessageDialog(null, "Perform 62 + 44 in BCD:");
+
+                        int firstInt = 62;
+                        int secondInt = 44;
+
+                        // Perform BCD addition
+                        int sum = firstInt + secondInt;
+
+                        // Convert decimal sum to BCD and display the result
+                        String bcd2 = decimalToBCD(sum);
+                        String bcd3 = decimalToBCD(firstInt);
+                        String bcd4 = decimalToBCD(secondInt);
+
+                        JOptionPane.showMessageDialog(null, "BCD value of first integer: " + bcd3);
+                        JOptionPane.showMessageDialog(null, "BCD value of second integer: " + bcd4);
+                        JOptionPane.showMessageDialog(null, "BCD binary value of sum: " + bcd2);
+                    } else if (e.getSource() == question3) {
+                        JOptionPane.showMessageDialog(null, "Perform 77 + 56 in BCD:");
+
+                        int firstInt = 77;
+                        int secondInt = 56;
+
+                        // Perform BCD addition
+                        int sum = firstInt + secondInt;
+
+                        // Convert decimal sum to BCD and display the result
+                        String bcd2 = decimalToBCD(sum);
+                        String bcd3 = decimalToBCD(firstInt);
+                        String bcd4 = decimalToBCD(secondInt);
+
+                        JOptionPane.showMessageDialog(null, "BCD value of first integer: " + bcd3);
+                        JOptionPane.showMessageDialog(null, "BCD value of second integer: " + bcd4);
+                        JOptionPane.showMessageDialog(null, "BCD value of sum: " + bcd2);
+                    }
                 }
 
-                return bcd.toString();
+                public static String decimalToBCD(int decimal){
+                    StringBuilder bcd = new StringBuilder();
+
+                    while (decimal > 0){
+                        int digit = decimal % 10;
+                        String binary = String.format("%04d", Integer.parseInt(Integer.toBinaryString(digit)));
+                        bcd.insert(0, binary);
+                        decimal /= 10;
+                    }
+
+                    // Split the BCD representation into groups of four digits
+                    for (int i = bcd.length() - 4; i > 0; i -= 4) {
+                        bcd.insert(i," ");
+                    }
+
+                    return bcd.toString();
+                }
             }
         }   
 
@@ -553,6 +754,85 @@ public class Rework extends JFrame implements ActionListener{
                 bcd.insert(i," ");
             }
             return bcd.toString();   
+        }
+
+        class SubMenu2CW extends JFrame implements ActionListener{
+            private JButton question1;
+            private JButton question2;
+            public SubMenu2CW(){
+                super("2's Complement Examples Menu");
+
+                question1 = new JButton("Question 1.");
+                question1.addActionListener(this);
+
+                question2 = new JButton("Question 2.");
+                question2.addActionListener(this);
+
+                JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
+                buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
+                buttonPanel.add(question1);
+                buttonPanel.add(question2);
+
+                getContentPane().setLayout(new BorderLayout());
+                getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                setSize(400, 140);
+                setLocationRelativeTo(null);
+            }
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == question1) {
+                    while (true) {
+                        JOptionPane.showMessageDialog(null, "Perform The Sum : 20 + 6 in 2's Complement Representation");
+                        byte decimal = 20;
+                        String binaryNum1 = String.format("%8s", Integer.toBinaryString(decimal & 0xFF)).replace(' ', '0');
+                        byte decimal2 = 6;
+                        String binaryNum2 = String.format("%8s", Integer.toBinaryString(decimal2 & 0xFF)).replace(' ', '0');
+                        int sum = decimal + decimal2;
+                        boolean overflow = sum > 127 || sum < -128;
+                        if (overflow) {
+                            JOptionPane.showMessageDialog(null, "Overflow error: the result is out of range.");
+                            continue;
+                        } else {
+
+                            String binarySum = Integer.toBinaryString(sum & 0xFF);
+                            binarySum = String.format("%8s", binarySum).replace(' ', '0');
+
+                            JOptionPane.showMessageDialog(null, "Binary representation of " + decimal + " is " + binaryNum1);
+                            JOptionPane.showMessageDialog(null, "Binary representation of " + decimal2 + " is " + binaryNum2);
+
+                            JOptionPane.showMessageDialog(null, "Binary representation of the sum of " + decimal + " and " + decimal2 + " is " + binarySum);
+
+                        }
+                        break;
+                    }
+                } else if (e.getSource() == question2) {
+                    while (true) {
+                        JOptionPane.showMessageDialog(null, "Perform The Sum : 20 + (-6) in 2's Complement Representation");
+                        byte decimal = 20;
+                        String binaryNum1 = String.format("%8s", Integer.toBinaryString(decimal & 0xFF)).replace(' ', '0');
+                        byte decimal2 = -6;
+                        String binaryNum2 = String.format("%8s", Integer.toBinaryString(decimal2 & 0xFF)).replace(' ', '0');
+                        int sum = decimal + decimal2;
+                        boolean overflow = sum > 127 || sum < -128;
+                        if (overflow) {
+                            JOptionPane.showMessageDialog(null, "Overflow error: the result is out of range.");
+                            continue;
+                        } else {
+
+                            String binarySum = Integer.toBinaryString(sum & 0xFF);
+                            binarySum = String.format("%8s", binarySum).replace(' ', '0');
+
+                            JOptionPane.showMessageDialog(null, "Binary representation of " + decimal + " is " + binaryNum1);
+                            JOptionPane.showMessageDialog(null, "Binary representation of " + decimal2 + " is " + binaryNum2);
+
+                            JOptionPane.showMessageDialog(null, "Binary representation of the sum of " + decimal + " and " + decimal2 + " is " + binarySum);
+
+                        }
+                        break;
+                    }
+                }
+            }
         }
 
         class SubMenu2CR extends JFrame implements ActionListener{
@@ -634,6 +914,9 @@ public class Rework extends JFrame implements ActionListener{
             private JButton innerC2CR;
             private SubMenu2CR subMenu2CR;
 
+            private JButton worksheet;
+            private SubMenu2CW subMenu2CW;
+
             public SubMenu2C(){
                 super("2's Complement Menu");
 
@@ -649,13 +932,18 @@ public class Rework extends JFrame implements ActionListener{
                 checkinteger = new JButton("Check Integer");
                 checkinteger.addActionListener(this);
 
-                JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 5));
+                worksheet = new JButton("Examples To Work Out");
+                worksheet.addActionListener(this);
+
+                JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 5));
                 buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5,7));
                 buttonPanel.add(explanation);
                 buttonPanel.add(addition);
                 buttonPanel.add(checkinteger);
 
                 buttonPanel.add(innerC2CR);
+
+                buttonPanel.add(worksheet);
 
                 getContentPane().setLayout(new BorderLayout());
                 getContentPane().add(buttonPanel, BorderLayout.CENTER);
@@ -730,12 +1018,12 @@ public class Rework extends JFrame implements ActionListener{
                 } else if (e.getSource() == checkinteger) {
                     while (true) {
                         String input = JOptionPane.showInputDialog("Enter an integer within the range of -128 to 127");
-                    
+
                         if (input == null || input.equalsIgnoreCase("q")) {
                             JOptionPane.showMessageDialog(null, "Operation Cancelled"); // to avoid crashing when cancelling
                             break;
                         }
-                    
+
                         byte decimal;
                         try {
                             decimal = Byte.parseByte(input);
@@ -743,11 +1031,14 @@ public class Rework extends JFrame implements ActionListener{
                             JOptionPane.showMessageDialog(null, "Invalid Input.\nPlease enter an appropriate Integer.");
                             continue;
                         }
-                    
+
                         String binaryNum1 = String.format("%8s", Integer.toBinaryString(decimal & 0xFF)).replace(' ', '0');
                         JOptionPane.showMessageDialog(null, "Binary representation of " + decimal + " is " + binaryNum1);
                     }
-                } 
+                } else if (e.getSource() == worksheet) {
+                    subMenu2CW = new SubMenu2CW();
+                    subMenu2CW.setVisible(true);
+                }
             }   
         }
         public void actionPerformed(ActionEvent e) {
