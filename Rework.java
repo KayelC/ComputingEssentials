@@ -587,7 +587,7 @@ public class Rework extends JFrame implements ActionListener{
                 }
             }
 
-            public static void performAddition() {
+            public void performAddition() {
                 while (true) {
                     String input1 = JOptionPane.showInputDialog(null, "Please Enter the First Integer:");
 
@@ -720,7 +720,7 @@ public class Rework extends JFrame implements ActionListener{
                     }
                 }
 
-                public static String decimalToBCD(int decimal){
+                public String decimalToBCD(int decimal){
                     StringBuilder bcd = new StringBuilder();
 
                     while (decimal > 0){
@@ -740,7 +740,7 @@ public class Rework extends JFrame implements ActionListener{
             }
         }   
 
-        public static String decimalToBCD(int decimal){
+        public String decimalToBCD(int decimal){
             StringBuilder bcd = new StringBuilder();
 
             while (decimal > 0){
