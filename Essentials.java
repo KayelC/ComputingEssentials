@@ -8,6 +8,9 @@ public class Essentials extends JFrame implements ActionListener{
     private JButton Module2;
     private SubMenuM2 subMenuM2;
 
+    private JButton Module4;
+    private SubMenuM4 subMenuM4;
+
     private JButton Module9;
     private SubMenuM9 subMenuM9;
 
@@ -20,6 +23,9 @@ public class Essentials extends JFrame implements ActionListener{
         Module2 = new JButton("Module 2");
         Module2.addActionListener(this);
 
+        Module4 = new JButton("Module 4");
+        Module4.addActionListener(this);
+
         Module9 = new JButton("Module 9");
         Module9.addActionListener(this);
 
@@ -27,6 +33,7 @@ public class Essentials extends JFrame implements ActionListener{
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
         buttonPanel.add(Module1);
         buttonPanel.add(Module2);
+        buttonPanel.add(Module4);
         buttonPanel.add(Module9);
 
         getContentPane().setLayout(new BorderLayout());
@@ -47,9 +54,463 @@ public class Essentials extends JFrame implements ActionListener{
         } else if (e.getSource() == Module2) {
             subMenuM2 = new SubMenuM2();
             subMenuM2.setVisible(true);
+        } else if (e.getSource() == Module4) {
+            subMenuM4 = new SubMenuM4();
+            subMenuM4.setVisible(true);
         }
     }
 
+    class SubMenuM4 extends JFrame implements ActionListener{
+        private JButton OS;
+        private SubMenuOS subMenuOS;
+
+        public SubMenuM4(){
+            super("Module 4 Menu");
+
+            OS = new JButton("Operating Systems");
+            OS.addActionListener(this);
+
+            JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+            buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+            buttonPanel.add(OS);
+
+            getContentPane().setLayout(new BorderLayout());
+            getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+            setSize(400, 140);
+            setLocationRelativeTo(null);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == OS) {
+                subMenuOS = new SubMenuOS();
+                subMenuOS.setVisible(true);
+            } 
+        }
+
+        class SubMenuOS extends JFrame implements ActionListener{
+            private JButton TOS;
+            private SubMenuTOS subMenuTOS;
+
+            private JButton PControl;
+            private SubMenuPC subMenuPC;
+
+            private JButton JControl;
+            private SubMenuJC subMenuJC;
+
+            public SubMenuOS(){
+                super("Operating Systems Menu");
+
+                TOS = new JButton("Types of OS");
+                TOS.addActionListener(this);
+
+                PControl = new JButton("Process Control Operations");
+                PControl.addActionListener(this);
+
+                JControl = new JButton("Job Control Languages");
+                JControl.addActionListener(this);
+
+                JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                buttonPanel.add(TOS);
+                buttonPanel.add(PControl);
+                buttonPanel.add(JControl);
+
+                getContentPane().setLayout(new BorderLayout());
+                getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                setSize(400, 140);
+                setLocationRelativeTo(null);
+            }
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == TOS) {
+                    subMenuTOS = new SubMenuTOS();
+                    subMenuTOS.setVisible(true);
+                } else if (e.getSource() == PControl) {
+                    subMenuPC = new SubMenuPC();
+                    subMenuPC.setVisible(true);
+                } else if (e.getSource() == JControl) {
+                    subMenuJC = new SubMenuJC();
+                    subMenuJC.setVisible(true);
+                }
+            }
+
+            class SubMenuJC extends JFrame implements ActionListener{
+                private JButton Definitions;
+                private SubMenuJCD subMenuJCD;
+
+                private JButton Description;
+
+                public SubMenuJC(){
+                    super("Job Control Languages Menu");
+
+                    Definitions = new JButton("Definitions");
+                    Definitions.addActionListener(this);
+
+                    Description = new JButton("Description");
+                    Description.addActionListener(this);
+
+                    JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                    buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                    buttonPanel.add(Description);
+                    buttonPanel.add(Definitions);
+
+                    getContentPane().setLayout(new BorderLayout());
+                    getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                    setSize(400, 140);
+                    setLocationRelativeTo(null);
+                }
+
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == Description) {
+                        String explanation, explanation2;
+
+                        explanation = "Job Control Language (JCL) is a scripting language used on mainframe operating systems, particularly IBM's z/OS.\nJCL is essential for managing and controlling batch processing on these systems.";
+                        explanation2 = "In summary, Job Control Language (JCL) is a powerful tool for managing and controlling batch processing on mainframe operating systems.\nIt allows users to define, schedule, and automate jobs, allocate resources, manage data, and handle errors, providing a structured and efficient way to execute complex tasks.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "JCL Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation2, "JCL Summary", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Definitions) {
+                        subMenuJCD = new SubMenuJCD();
+                        subMenuJCD.setVisible(true);
+                    }
+                }
+
+                class SubMenuJCD extends JFrame implements ActionListener{
+                    private JButton BProc;
+                    private JButton JobD;
+                    private JButton JobC;
+                    private JButton Resource;
+                    private JButton DataM;
+                    private JButton DepenM;
+                    private JButton ErrHand;
+                    private JButton Scheduling;
+                    private JButton Automation;
+
+                    public SubMenuJCD(){
+                        super("Job Control Language Definitions Menu");
+
+                        BProc = new JButton("Batch Processing");
+                        BProc.addActionListener(this);
+
+                        JobD = new JButton("Job Definition");
+                        JobD.addActionListener(this);
+
+                        JobC = new JButton("Job Control Statements");
+                        JobC.addActionListener(this);
+
+                        Resource = new JButton("Resource Allocation");
+                        Resource.addActionListener(this);
+
+                        DataM = new JButton("Data Management");
+                        DataM.addActionListener(this);
+
+                        DepenM = new JButton("Dependency Management");
+                        DepenM.addActionListener(this);
+
+                        ErrHand = new JButton("Error Handling");
+                        ErrHand.addActionListener(this);
+
+                        Scheduling = new JButton("Job Scheduling");
+                        Scheduling.addActionListener(this);
+
+                        Automation = new JButton("Automation");
+                        Automation.addActionListener(this);
+
+                        JPanel buttonPanel = new JPanel(new GridLayout(5, 1, 10, 5));
+                        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                        buttonPanel.add(BProc);
+                        buttonPanel.add(JobD);
+                        buttonPanel.add(JobC);
+                        buttonPanel.add(Resource);
+                        buttonPanel.add(DataM);
+                        buttonPanel.add(DepenM);
+                        buttonPanel.add(ErrHand);
+                        buttonPanel.add(Scheduling);
+                        buttonPanel.add(Automation);
+
+                        getContentPane().setLayout(new BorderLayout());
+                        getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                        setSize(400, 210);
+                        setLocationRelativeTo(null);
+                    }
+                    
+                    public void actionPerformed(ActionEvent e){
+                        if (e.getSource() == BProc) {
+                            String explanation;
+                            
+                            explanation = "JCL is primarily used for defining and controlling batch jobs.\nBatch processing involves the execution of a series of jobs or programs without manual intervention.\nJCL specifies the sequence of programs to be executed, their input and output files, and other necessary parameters.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Batch Processing Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == JobD) {
+                            String explanation;
+                            
+                            explanation = "JCL is used to define a job, which is a unit of work or a set of related tasks that need to be executed together.\nA job typically consists of one or more programs or procedures, along with the necessary data and control statements.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Job Definition Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == JobC) {
+                            String explanation;
+                            
+                            explanation = "JCL includes statements that provide control information to the operating system.\nThese statements specify details such as program names, input and output files,\nsystem resources required, and other job-related parameters.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Job Control Statements Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == DataM) {
+                            String explanation;
+                            
+                            explanation = "JCL is used to manage data within a job.\nIt specifies the input data sets that programs will use and defines the output data sets where program results will be stored.\nThis includes information about data organization, record format, and file attributes.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Data Management Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == DepenM) {
+                            String explanation;
+                            
+                            explanation = "JCL allows the definition of dependencies between different jobs.\nThis ensures that certain jobs only run after the successful completion of others,\ncreating a logical sequence of execution.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Dependency Management Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == Resource) {
+                            String explanation;
+                            
+                            explanation = "JCL is used to allocate the necessary resources for a job,\nincluding specifying the amount of CPU time, memory,\nand other system resources required for successful execution.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Resource Allocation Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == ErrHand) {
+                            String explanation;
+                            
+                            explanation = "JCL includes mechanisms for handling errors during job execution.\nIt allows for the definition of procedures to be followed in case of errors, such as rerouting output,\nrestarting the job, or terminating the job with a specific return code.";
+                        
+                            JOptionPane.showMessageDialog(null, explanation, "Error Handling Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == Scheduling) {
+                            String explanation;
+                            
+                            explanation = "JCL is often integrated with job scheduling systems.\nIt allows users to specify when a job should be executed, based on factors such as time of day, day of the week, or other criteria.\nThis helps in optimizing resource utilization and meeting business requirements.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Job Scheduling Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        } else if (e.getSource() == Automation) {
+                            String explanation;
+                            
+                            explanation = "JCL plays a crucial role in automating repetitive tasks and large-scale data processing.\nBy defining jobs and their associated parameters, users can automate the execution of complex processes without manual intervention.";
+                            
+                            JOptionPane.showMessageDialog(null, explanation, "Automation Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        }
+                    }
+                }
+            }
+
+            class SubMenuPC extends JFrame implements ActionListener{
+                private JButton CT;
+                private JButton Scheduling;
+                private JButton State;
+                private JButton SyncComm;
+                private JButton IntHand;
+                private JButton Resource;
+                private JButton Exec;
+                private JButton ErrHand;
+
+                public SubMenuPC(){
+                    super("Process Control Operations Menu");
+
+                    CT = new JButton("Creation and Termination");
+                    CT.addActionListener(this);
+
+                    Scheduling = new JButton("Scheduling");
+                    Scheduling.addActionListener(this);
+
+                    State = new JButton("State Changes");
+                    State.addActionListener(this);
+
+                    SyncComm = new JButton("Sync and Communication");
+                    SyncComm.addActionListener(this);
+
+                    IntHand = new JButton("Interrupt Handling");
+                    IntHand.addActionListener(this);
+
+                    Resource = new JButton("Resource De/Allocation");
+                    Resource.addActionListener(this);
+
+                    Exec = new JButton("Execution Control");
+                    Exec.addActionListener(this);
+
+                    ErrHand = new JButton("Error Handling");
+                    ErrHand.addActionListener(this);
+
+                    JPanel buttonPanel = new JPanel(new GridLayout(4, 1, 10, 5));
+                    buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                    buttonPanel.add(CT);
+                    buttonPanel.add(State);
+                    buttonPanel.add(Scheduling);
+                    buttonPanel.add(SyncComm);
+                    buttonPanel.add(IntHand);
+                    buttonPanel.add(Resource);
+                    buttonPanel.add(Exec);
+                    buttonPanel.add(ErrHand);
+
+                    getContentPane().setLayout(new BorderLayout());
+                    getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                    setSize(400, 200);
+                    setLocationRelativeTo(null);
+                }
+
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == CT) {
+                        String explanation, explanation2;
+
+                        explanation = "Creation : The operating system is responsible for creating new processes.\nThis involves allocating the necessary resources, setting up data structures,\nand initializing the process control block (PCB), which contains information about the process.";
+                        explanation2 = "Termination : When a process completes its execution or is no longer needed, the operating system terminates the process.\nThis involves releasing allocated resources, deallocating memory, and updating relevant data structures.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Creation Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation2, "Termination Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Scheduling) {
+                        String explanation;
+
+                        explanation = "The operating system must decide which process to execute next from the pool of ready processes.\nThis decision is made by the scheduler, which employs scheduling algorithms to determine the order in which processes will be executed on the CPU.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Scheduling Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == State) {
+                        String explanation;
+
+                        explanation = "Processes go through different states during their lifecycle, such as new, ready, running, blocked, and terminated.\nProcess control operations involve transitioning processes between these states based on events and conditions.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "State Changes Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == SyncComm) {
+                        String explanation;
+
+                        explanation = "Processes may need to synchronize their execution or communicate with each other.\nOperating systems provide mechanisms like semaphores, mutexes,\nand inter-process communication (IPC) facilities to enable synchronization and communication between processes.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Synchronization and Communication Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == IntHand) {
+                        String explanation;
+
+                        explanation = "Interrupts are signals generated by hardware or software to interrupt the normal execution of a process.\nThe operating system must handle interrupts efficiently, saving the context of the interrupted process and executing an appropriate interrupt service routine.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Interrupt Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Resource) {
+                        String explanation;
+
+                        explanation = "The operating system manages resources such as CPU time, memory, and I/O devices.\nProcess control operations include allocating resources to processes as they need them and deallocating resources when they are no longer required.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Resource Allocation and Deallocation Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Exec) {
+                        String explanation;
+
+                        explanation = "The operating system has mechanisms to control the execution of processes.\nThis includes the ability to pause, resume, or abort the execution of a process.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Execution Control Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == ErrHand) {
+                        String explanation;
+
+                        explanation = "Processes may encounter errors during execution.\nThe operating system is responsible for detecting and handling errors,\nwhich may involve terminating the faulty process or taking corrective actions.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Creation Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+                }
+            }
+
+            class SubMenuTOS extends JFrame implements ActionListener{
+                private JButton Batch;
+                private JButton Online;
+                private JButton Realtime;
+                private JButton Network;
+
+                public SubMenuTOS(){
+                    super("Types Of Operating Systems Menu");
+
+                    Batch = new JButton("Batch");
+                    Batch.addActionListener(this);
+
+                    Online = new JButton("On-line");
+                    Online.addActionListener(this);
+
+                    Realtime = new JButton("Real-time");
+                    Realtime.addActionListener(this);
+
+                    Network = new JButton("Network");
+                    Network.addActionListener(this);
+
+                    JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                    buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                    buttonPanel.add(Batch);
+                    buttonPanel.add(Online);
+                    buttonPanel.add(Realtime);
+                    buttonPanel.add(Network);
+
+                    getContentPane().setLayout(new BorderLayout());
+                    getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                    setSize(400, 140);
+                    setLocationRelativeTo(null);
+                }
+
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == Network) {
+                        String explanation, explanation2, explanation3;
+
+                        explanation = "Function : Network operating systems are designed to manage and coordinate the activities of multiple computers within a network.\nThey facilitate communication, resource sharing, and data exchange among connected devices.";
+                        explanation2 = "Specifics : Network operating systems provide features like file sharing, printer sharing, and centralized user authentication.\nExamples include Novell NetWare and Microsoft Windows Server.";
+                        explanation3 = "Differences : Network operating systems are focused on facilitating communication and resource sharing in a networked environment.\nThey may incorporate elements of batch, on-line, or real-time processing depending on the specific needs of the networked applications.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Network Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation2, "Network Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation3, "Network Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Online) {
+                        String explanation, explanation2, explanation3;
+
+                        explanation = "Function : Online operating systems, also known as time-sharing systems, allow multiple users to interact with the computer simultaneously.\nEach user gets a small portion of the CPU time.";
+                        explanation2 = "Specifics : Users can interact with the system through terminals,\nand the operating system rapidly switches between tasks to give the illusion of simultaneous execution.";
+                        explanation3 = "Differences : On-line systems provide a more interactive experience compared to batch systems.\nThey are suitable for scenarios where multiple users need concurrent access to the system,\nsuch as in business offices or educational institutions.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "On-line Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation2, "On-line Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation3, "On-line Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Realtime) {
+                        String explanation, explanation2, explanation3;
+
+                        explanation = "Function : Real-time operating systems are designed to respond to events or inputs within a specified time frame.\nThey are crucial in applications where timely and predictable responses are critical.";
+                        explanation2 = "Specifics : Real-time systems are classified into hard and soft real-time.\nHard real-time systems must meet strict deadlines,\nwhile soft real-time systems have some flexibility in meeting deadlines.";
+                        explanation3 = "Differences : Real-time systems are used in applications like medical devices, aerospace systems, and industrial control systems where timing is crucial.\nThey differ from batch and on-line systems in their focus on immediate response and predictability.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Realtime Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation2, "Realtime Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation3, "Realtime Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (e.getSource() == Batch) {
+                        String explanation, explanation2, explanation3;
+
+                        explanation = "Function : Batch operating systems are designed to process tasks in batches without user interaction.\nUsers submit their jobs, and the operating system collects and processes them in groups.";
+                        explanation2 = "Specifics : Jobs are usually stored in a job queue and processed sequentially.\nThe system moves from one job to the next without user intervention.";
+                        explanation3 = "Differences : Batch systems are less interactive and more suitable for tasks that can be automated and don't require constant user input.\nThey are commonly used in business and scientific environments.";
+
+                        JOptionPane.showMessageDialog(null, explanation, "Batch Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation2, "Batch Explanation", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, explanation3, "Batch Explanation", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+                }
+            }
+        }
+    }
     class SubMenuM2 extends JFrame implements ActionListener{
         private JButton Memory;
         private SubMenuM subMenuM;
@@ -1041,7 +1502,7 @@ public class Essentials extends JFrame implements ActionListener{
             private JButton Absorption;
             private JButton Complement;
             private JButton Tautology;
-            
+
             public SubMenuBA(){
                 super("Boolean Algebra Menu");
                 Commutative = new JButton("Commutative Law");
@@ -1080,124 +1541,124 @@ public class Essentials extends JFrame implements ActionListener{
 
                 setSize(400, 200);
                 setLocationRelativeTo(null);
-                }
+            }
 
-                public void actionPerformed(ActionEvent e) {
-                    if (e.getSource() == Commutative) {
-                        String statement, example;
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == Commutative) {
+                    String statement, example;
 
-                        statement = "The order of application of two separate terms is not important";
-                        example = "A . B = B . A\n A + B = B + A";
+                    statement = "The order of application of two separate terms is not important";
+                    example = "A . B = B . A\n A + B = B + A";
 
-                        JOptionPane.showMessageDialog(null, statement, "Commutative Law", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, example, "Commutative Law", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    } else if (e.getSource() == Associative) {
-                        String statement, exampleOR, exampleAND;
-            
-                        statement = "Associative law allows the removal of brackets from an expression and regrouping of the variables";
-    
-                        exampleOR = "A + (B + C) = (A + B) + C = A + B + C";
-    
-                        exampleAND = "A (B . C) = (A . B) C = A . B . C ";
-    
-                        JOptionPane.showMessageDialog(null, statement, "Associative Law", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleOR, "Associative Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleAND, "Associative Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    } else if (e.getSource() == Distributive) {
-                        String statement, exampleOR, exampleAND;
-        
-                        statement = "Distributive Law permits the multiplying or factoring out of an expression.";
+                    JOptionPane.showMessageDialog(null, statement, "Commutative Law", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, example, "Commutative Law", JOptionPane.INFORMATION_MESSAGE);
 
-                        exampleOR = "A(B + C) = A . B + A . C";
+                } else if (e.getSource() == Associative) {
+                    String statement, exampleOR, exampleAND;
 
-                        exampleAND = "A+(B . C) = (A + B) . (A + C)";
+                    statement = "Associative law allows the removal of brackets from an expression and regrouping of the variables";
 
-                        JOptionPane.showMessageDialog(null, statement, "Distributive Law", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleOR, "Distributive Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleAND, "Distributive Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    } else if (e.getSource() == Demorgan) {
-                        String statement, exampleOR, explanationOR, explanationAND, exampleAND;
-        
-                        statement = "DeMorgan's Theorems describe the equivalence between gates with inverted inputs and gates with inverted outputs.";
+                    exampleOR = "A + (B + C) = (A + B) + C = A + B + C";
 
-                        explanationOR = "Two separate terms NOR'ed together is the same as the two terms inverted(Complemented) and AND'ed";
-                        exampleOR = "(NOT A+B) = (NOT A) . (NOT B)";
+                    exampleAND = "A (B . C) = (A . B) C = A . B . C ";
 
-                        explanationAND = "Two separate terms NAND'ed together is the same as the two terms inverted(Complemented) and OR'ed";
-                        exampleAND = "(NOT A.B) = (NOT A) + (NOT B)";
+                    JOptionPane.showMessageDialog(null, statement, "Associative Law", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleOR, "Associative Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleAND, "Associative Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
 
-                        JOptionPane.showMessageDialog(null, statement, "De Morgan's Law", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, explanationOR, "De Morgan's Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleOR, "De Morgan's Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, explanationAND, "De Morgan's Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleAND, "De Morgan's Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    } else if (e.getSource() == Absorption) {
-                        String statement, exampleOR, exampleAND;
-        
-                        statement = "Absorption Law enables a reduction in a complicated expression to a simpler one by absorbing like terms.";
+                } else if (e.getSource() == Distributive) {
+                    String statement, exampleOR, exampleAND;
 
-                        exampleOR = "A + (A . B) = (A . 1) + (A . B) = A (1 . B ) = A";
+                    statement = "Distributive Law permits the multiplying or factoring out of an expression.";
 
-                        exampleAND = "A (A + B) = (A + 0) . (A + B) = A + (0 . B) = A";
+                    exampleOR = "A(B + C) = A . B + A . C";
 
-                        JOptionPane.showMessageDialog(null, statement, "Absorption Law", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleOR, "Absorption Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleAND, "Absorption Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    } else if (e.getSource() == Complement) {
-                        String statement, explanationOR, exampleOR, explanationAND,  exampleAND; 
-        
-                        statement = "The Complement is the inverse of a variable and is indicated by a bar over the variable as /Variable or in brackets as (NOT Variable)";
+                    exampleAND = "A+(B . C) = (A + B) . (A + C)";
 
-                        // OR GATE
-                        explanationOR = "A term OR'ed with its complement equals '1'";
-                        exampleOR = "A + (NOT A) = 1";
+                    JOptionPane.showMessageDialog(null, statement, "Distributive Law", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleOR, "Distributive Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleAND, "Distributive Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
 
-                        // AND GATE
-                        explanationAND = "A term AND'ed with its complement equals '0'";
-                        exampleAND = "A . (NOT A) = 0";
+                } else if (e.getSource() == Demorgan) {
+                    String statement, exampleOR, explanationOR, explanationAND, exampleAND;
 
-                        JOptionPane.showMessageDialog(null, statement, "Complement Law", JOptionPane.INFORMATION_MESSAGE);
+                    statement = "DeMorgan's Theorems describe the equivalence between gates with inverted inputs and gates with inverted outputs.";
 
-                        JOptionPane.showMessageDialog(null, explanationOR, "Complement Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleOR, "Complement Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+                    explanationOR = "Two separate terms NOR'ed together is the same as the two terms inverted(Complemented) and AND'ed";
+                    exampleOR = "(NOT A+B) = (NOT A) . (NOT B)";
 
-                        JOptionPane.showMessageDialog(null, explanationAND, "Complement Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
-                        JOptionPane.showMessageDialog(null, exampleAND, "Complement Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    } else if (e.getSource() == Tautology) {
-                         String[] messages = {
-                        "While not Boolean Laws in their own right, these are a set of Mathematical Laws which can be used in the simplification of Boolean Expressions.",
-                        "0 . 0 = 0\nA 0 AND'ed with itself is always equal to 0",
-                        "1 . 1 = 1\nA 1 AND'ed with itself is always equal to 1",
-                        "1 . 0 = 0\nA 1 AND'ED with a 0 is equal to 0",
-                        "0 + 0 = 0\nA 0 OR'ed with itself is always equal to 0",
-                        "1 + 1 = 1\nA 1 OR'ed with itself is always equal to 1",
-                        "1 + 0 = 1\nA 1 OR'ed with a 0 is equal to 1",
-                        "/1 = 0\nThe Inverse(Complement) of a 1 is always equal to 0",
-                        "/0 = 1\nThe Inverse(Complement) of a 0 is always equal to 1"
+                    explanationAND = "Two separate terms NAND'ed together is the same as the two terms inverted(Complemented) and OR'ed";
+                    exampleAND = "(NOT A.B) = (NOT A) + (NOT B)";
+
+                    JOptionPane.showMessageDialog(null, statement, "De Morgan's Law", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, explanationOR, "De Morgan's Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleOR, "De Morgan's Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, explanationAND, "De Morgan's Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleAND, "De Morgan's Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+
+                } else if (e.getSource() == Absorption) {
+                    String statement, exampleOR, exampleAND;
+
+                    statement = "Absorption Law enables a reduction in a complicated expression to a simpler one by absorbing like terms.";
+
+                    exampleOR = "A + (A . B) = (A . 1) + (A . B) = A (1 . B ) = A";
+
+                    exampleAND = "A (A + B) = (A + 0) . (A + B) = A + (0 . B) = A";
+
+                    JOptionPane.showMessageDialog(null, statement, "Absorption Law", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleOR, "Absorption Law - OR Operation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleAND, "Absorption Law - AND Operation", JOptionPane.INFORMATION_MESSAGE);
+
+                } else if (e.getSource() == Complement) {
+                    String statement, explanationOR, exampleOR, explanationAND,  exampleAND; 
+
+                    statement = "The Complement is the inverse of a variable and is indicated by a bar over the variable as /Variable or in brackets as (NOT Variable)";
+
+                    // OR GATE
+                    explanationOR = "A term OR'ed with its complement equals '1'";
+                    exampleOR = "A + (NOT A) = 1";
+
+                    // AND GATE
+                    explanationAND = "A term AND'ed with its complement equals '0'";
+                    exampleAND = "A . (NOT A) = 0";
+
+                    JOptionPane.showMessageDialog(null, statement, "Complement Law", JOptionPane.INFORMATION_MESSAGE);
+
+                    JOptionPane.showMessageDialog(null, explanationOR, "Complement Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleOR, "Complement Law - OR Operator", JOptionPane.INFORMATION_MESSAGE);
+
+                    JOptionPane.showMessageDialog(null, explanationAND, "Complement Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, exampleAND, "Complement Law - AND Operator", JOptionPane.INFORMATION_MESSAGE);
+
+                } else if (e.getSource() == Tautology) {
+                    String[] messages = {
+                            "While not Boolean Laws in their own right, these are a set of Mathematical Laws which can be used in the simplification of Boolean Expressions.",
+                            "0 . 0 = 0\nA 0 AND'ed with itself is always equal to 0",
+                            "1 . 1 = 1\nA 1 AND'ed with itself is always equal to 1",
+                            "1 . 0 = 0\nA 1 AND'ED with a 0 is equal to 0",
+                            "0 + 0 = 0\nA 0 OR'ed with itself is always equal to 0",
+                            "1 + 1 = 1\nA 1 OR'ed with itself is always equal to 1",
+                            "1 + 0 = 1\nA 1 OR'ed with a 0 is equal to 1",
+                            "/1 = 0\nThe Inverse(Complement) of a 1 is always equal to 0",
+                            "/0 = 1\nThe Inverse(Complement) of a 0 is always equal to 1"
                         };
-                        String title = "Tautology";
-                        int index = 0;
-                        while (index < messages.length) {
-                            int option = JOptionPane.showOptionDialog(null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"🡢", "🡠"}, "Next");
-                                if (option == JOptionPane.CLOSED_OPTION) {
-                                    // User closed the dialog, exit the loop
-                                    break;
-                                } else if (option == 0) {
-                                    index++;
-                                } else if (option == 1 && index > 0) {
-                                    index--;
-                                }
-                            } 
+                    String title = "Tautology";
+                    int index = 0;
+                    while (index < messages.length) {
+                        int option = JOptionPane.showOptionDialog(null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"🡢", "🡠"}, "Next");
+                        if (option == JOptionPane.CLOSED_OPTION) {
+                            // User closed the dialog, exit the loop
+                            break;
+                        } else if (option == 0) {
+                            index++;
+                        } else if (option == 1 && index > 0) {
+                            index--;
                         }
-                    }           
+                    } 
                 }
-            
+            }           
+        }
+
         class SubMenuDC extends JFrame implements ActionListener{
             private JButton Bit;
             private JButton Nibble;
@@ -1261,7 +1722,7 @@ public class Essentials extends JFrame implements ActionListener{
 
                     JOptionPane.showMessageDialog(null, explanation, "Bit (b) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Bit (b) Explanation", JOptionPane.INFORMATION_MESSAGE);
-    
+
                 } else if (e.getSource() == Nibble) {
                     String explanation, explanation2;
 
@@ -1270,7 +1731,7 @@ public class Essentials extends JFrame implements ActionListener{
 
                     JOptionPane.showMessageDialog(null, explanation, "Nibble Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Nibble Explanation", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else if (e.getSource() == Kilobyte) {
                     String explanation, explanation2;
 
@@ -1279,18 +1740,18 @@ public class Essentials extends JFrame implements ActionListener{
 
                     JOptionPane.showMessageDialog(null, explanation, "Kilobyte (KB) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Kilobyte (KB) Explanation", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else if (e.getSource() == Byte) {
                     String explanation, explanation2, explanation3;
 
                     explanation = "A byte comprises 8 bits.";
                     explanation2 = "It is the basic addressable element in computer memory.";
                     explanation3 = "Most computer systems use bytes to represent a character or a numerical value.";
-                    
+
                     JOptionPane.showMessageDialog(null, explanation, "Byte (B) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Byte (B) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation3, "Byte (B) Explanation", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else if (e.getSource() == Megabyte) {
                     String explanation, explanation2;
 
@@ -1299,7 +1760,7 @@ public class Essentials extends JFrame implements ActionListener{
 
                     JOptionPane.showMessageDialog(null, explanation, "Megabyte (MB) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Megabyte (MB) Explanation", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else if (e.getSource() == Gigabyte) {
                     String explanation, explanation2;
 
@@ -1308,7 +1769,7 @@ public class Essentials extends JFrame implements ActionListener{
 
                     JOptionPane.showMessageDialog(null, explanation, "Gigabyte (GB) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Gigabyte (GB) Explanation", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else if (e.getSource() == Terabyte) {
                     String explanation, explanation2;
 
@@ -1317,18 +1778,18 @@ public class Essentials extends JFrame implements ActionListener{
 
                     JOptionPane.showMessageDialog(null, explanation, "Terabyte (TB) Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Terabyte (TB) Explanation", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else if (e.getSource() == Formula) {
                     String explanation, explanation2, explanation3;
 
                     explanation = "The formula for converting between these units is : \nBytes = 2⁽¹⁰*ˣ⁾";
                     explanation2 = "Examples : \n- Bytes to Kilobytes : Kilobytes = 2¹⁰ x Bytes\n- Kilobytes to Megabytes : Megabytes = 2¹⁰ x Kilobytes\n- Megabytes to Gigabytes : Gigabytes = 2¹⁰ x Megabytes\n- Gigabytes to Terabytes : Terabytes = 2¹⁰ x Gigabytes ";
                     explanation3 = "This formula is based on the fact that each step in the binary system represents a factor of 2,\nand in the case of digital storage, it's a factor of 2 raised to the power of 10 for each step in the hierarchy.";
-                    
+
                     JOptionPane.showMessageDialog(null, explanation, "Formula Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation2, "Formula Explanation", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, explanation3, "Formula Explanation", JOptionPane.INFORMATION_MESSAGE);
-                
+
                 }
             }
         }
