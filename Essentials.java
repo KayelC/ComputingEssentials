@@ -13,6 +13,8 @@ public class Essentials extends JFrame implements ActionListener{
 
     private JButton Module9;
     private SubMenuM9 subMenuM9;
+    
+    private JButton Credits;
 
     public Essentials() {
         super("Main Menu");
@@ -28,18 +30,22 @@ public class Essentials extends JFrame implements ActionListener{
 
         Module9 = new JButton("Module 9");
         Module9.addActionListener(this);
+        
+        Credits = new JButton("Credits");
+        Credits.addActionListener(this);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 10, 5));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
         buttonPanel.add(Module1);
         buttonPanel.add(Module2);
         buttonPanel.add(Module4);
         buttonPanel.add(Module9);
+        buttonPanel.add(Credits);
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(buttonPanel, BorderLayout.CENTER);
 
-        setSize(400, 140);
+        setSize(430, 180);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
@@ -57,6 +63,12 @@ public class Essentials extends JFrame implements ActionListener{
         } else if (e.getSource() == Module4) {
             subMenuM4 = new SubMenuM4();
             subMenuM4.setVisible(true);
+        } else if (e.getSource() == Credits) {
+            String desc;
+            
+            desc = "Author : Kayel Calleja\nNotes : Dr Patrick Schembri, -Databases";
+            
+            JOptionPane.showMessageDialog(null, desc, "Credits", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -238,71 +250,71 @@ public class Essentials extends JFrame implements ActionListener{
                         setSize(400, 210);
                         setLocationRelativeTo(null);
                     }
-                    
+
                     public void actionPerformed(ActionEvent e){
                         if (e.getSource() == BProc) {
                             String explanation;
-                            
+
                             explanation = "JCL is primarily used for defining and controlling batch jobs.\nBatch processing involves the execution of a series of jobs or programs without manual intervention.\nJCL specifies the sequence of programs to be executed, their input and output files, and other necessary parameters.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Batch Processing Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == JobD) {
                             String explanation;
-                            
+
                             explanation = "JCL is used to define a job, which is a unit of work or a set of related tasks that need to be executed together.\nA job typically consists of one or more programs or procedures, along with the necessary data and control statements.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Job Definition Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == JobC) {
                             String explanation;
-                            
+
                             explanation = "JCL includes statements that provide control information to the operating system.\nThese statements specify details such as program names, input and output files,\nsystem resources required, and other job-related parameters.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Job Control Statements Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == DataM) {
                             String explanation;
-                            
+
                             explanation = "JCL is used to manage data within a job.\nIt specifies the input data sets that programs will use and defines the output data sets where program results will be stored.\nThis includes information about data organization, record format, and file attributes.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Data Management Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == DepenM) {
                             String explanation;
-                            
+
                             explanation = "JCL allows the definition of dependencies between different jobs.\nThis ensures that certain jobs only run after the successful completion of others,\ncreating a logical sequence of execution.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Dependency Management Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == Resource) {
                             String explanation;
-                            
+
                             explanation = "JCL is used to allocate the necessary resources for a job,\nincluding specifying the amount of CPU time, memory,\nand other system resources required for successful execution.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Resource Allocation Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == ErrHand) {
                             String explanation;
-                            
+
                             explanation = "JCL includes mechanisms for handling errors during job execution.\nIt allows for the definition of procedures to be followed in case of errors, such as rerouting output,\nrestarting the job, or terminating the job with a specific return code.";
-                        
+
                             JOptionPane.showMessageDialog(null, explanation, "Error Handling Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == Scheduling) {
                             String explanation;
-                            
+
                             explanation = "JCL is often integrated with job scheduling systems.\nIt allows users to specify when a job should be executed, based on factors such as time of day, day of the week, or other criteria.\nThis helps in optimizing resource utilization and meeting business requirements.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Job Scheduling Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         } else if (e.getSource() == Automation) {
                             String explanation;
-                            
+
                             explanation = "JCL plays a crucial role in automating repetitive tasks and large-scale data processing.\nBy defining jobs and their associated parameters, users can automate the execution of complex processes without manual intervention.";
-                            
+
                             JOptionPane.showMessageDialog(null, explanation, "Automation Explanation", JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         }
                     }
                 }
@@ -1148,7 +1160,7 @@ public class Essentials extends JFrame implements ActionListener{
             public SubMenuDB() {
                 super("Databases Menu");
 
-                Basics = new JButton("Basics");
+                Basics = new JButton("Management Systems");
                 Basics.addActionListener(this);
 
                 Models = new JButton("Models");
@@ -1294,54 +1306,298 @@ public class Essentials extends JFrame implements ActionListener{
                 }
 
                 class SubMenuDBT extends JFrame implements ActionListener{
-                    private JButton Strings;
-                    private JButton Terminology;
+                    private JButton DataB;
+                    private JButton FileM;
+                    private JButton DataD;
+                    private JButton SpreadS;
+                    private JButton DML;
+                    private JButton DDL;
+                    private JButton DQL;
+                    private JButton Security;
 
                     public SubMenuDBT(){
-                        super("Databases Basic Terms Menu");
+                        super("Databases System Management Menu");
 
-                        Strings = new JButton("Facts");
-                        Strings.addActionListener(this);
+                        DataB = new JButton("Database");
+                        DataB.addActionListener(this);
 
-                        Terminology = new JButton("Terms");
-                        Terminology.addActionListener(this);
+                        FileM = new JButton("File Manager");
+                        FileM.addActionListener(this);
 
-                        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                        DataD = new JButton("Data Dictionary");
+                        DataD.addActionListener(this);
+
+                        SpreadS = new JButton("DB vs SpreadSheet");
+                        SpreadS.addActionListener(this);
+
+                        DML = new JButton("Data Manipulation Language");
+                        DML.addActionListener(this);
+                        
+                        DQL = new JButton("Data Query Language");
+                        DQL.addActionListener(this);
+                        
+                        DDL = new JButton("Data Description Language");
+                        DDL.addActionListener(this);
+                        
+                        Security = new JButton("Security");
+                        Security.addActionListener(this);
+
+                        JPanel buttonPanel = new JPanel(new GridLayout(4, 1, 10, 5));
                         buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
-                        buttonPanel.add(Strings);
-                        buttonPanel.add(Terminology);
-
+                        buttonPanel.add(DataB);
+                        buttonPanel.add(DML);
+                        buttonPanel.add(DataD);
+                        buttonPanel.add(SpreadS);
+                        buttonPanel.add(FileM);
+                        buttonPanel.add(DQL);
+                        buttonPanel.add(DDL);
+                        buttonPanel.add(Security);
+                        
                         getContentPane().setLayout(new BorderLayout());
                         getContentPane().add(buttonPanel, BorderLayout.CENTER);
 
-                        setSize(400, 140);
+                        setSize(430, 200);
                         setLocationRelativeTo(null);
                     }
 
                     public void actionPerformed(ActionEvent e) {
                         // Handle the button click action here
-                        if (e.getSource() == Strings) {
-                            String explanation, explanation2, explanation3;
+                        if (e.getSource() == DataB) {
+                            //credit Dr Patrick Schembri for notes 
+                            String[] messages = {
+                                    "A database is an organized collection of structured information, or data,\ntypically stored electronically in a computer system.",
+                                    "A database is usually controlled by a database management system(DBMS)",
+                                    "Together, the data and the DBMS, along with the applications that are\nassociated with them, are referred to as a database system, often\nshortened to just database.",
+                                    "Data within the most common types of databases in operation today is\ntyically modeled in rows and columns in a series of tables to make\nprocessing and data querying efficient.",
+                                    "The data can then be easily accessed, managed, modified, updated,\ncontrolled, and organized.",
+                                    "Most databases use structured query language (SQL) for writing and\nquerying data.",
+                                };
+                            String title = "Database";
+                            int index = 0;
 
-                            explanation  = "A database is an organised collection of data or information.";
-                            explanation2 = "A data dictionary is a collection of names, definitons and attribues about the data elements that are beuing used or caputured in a database.";
-                            explanation3 = "The file manager is a system software responsible for the creation, deletion and modification of files.";
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
 
-                            JOptionPane.showMessageDialog(null, explanation, "Databases Explanation", JOptionPane.INFORMATION_MESSAGE);
-                            JOptionPane.showMessageDialog(null, explanation2, "Databases Explanation", JOptionPane.INFORMATION_MESSAGE);
-                            JOptionPane.showMessageDialog(null, explanation3, "Databases Explanation", JOptionPane.INFORMATION_MESSAGE);
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == DataD) {
+                            String[] messages = {
+                                    "A Data Dictionary is a collection of names, definitions, and attributes about\ndata elements that are being used or captured in a database.",
+                                    "In simplest terms in contains :\n- a list of all files in the database.\n- the number of records in each file.\n- the names and types of each field.",
+                                    "The data dictionary provides the DBA with the necessary data for him/her\n-to manage overall control of the database.",
+                                };
+                            String title = "Data Dictionary";
+                            int index = 0;
 
-                        } else if (e.getSource() == Terminology) {
-                            String explanation, explanation2, explanation3;
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
 
-                            explanation = "Database Management System - DBMS - Controls The Database\nStructured Query Language - SQL - Language That Controls The Data\nData manipulation Language - DML - Manipulates and Manages data in a database.";
-                            explanation2 = "Data Description Language - DDL - Creates and modifies the structure of the database\nData Query Language - DQL - Retrieves information or data from a database.";
-                            explanation3 = "DML Commands - Insert, Delete, Update, Lock\nDDL Commands - Create, Drop, Alter, Truncate, Comment, Rename\nDQL Commands - Select";
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == FileM) {
+                            String[] messages = {
+                                    "The file manager is that part of the OS which allows physical access to\ndata which is stored on the disk.",
+                                    "Therefore, the file manager is the software which manages access to the\ndata at the physical-level subschema.",
+                                    "It is responsible for the\n- Structure of files.\n- Storing and retrieving records.",
+                                };
+                            String title = "File Manager";
+                            int index = 0;
 
-                            JOptionPane.showMessageDialog(null, explanation, "Databases Explanation", JOptionPane.INFORMATION_MESSAGE);
-                            JOptionPane.showMessageDialog(null, explanation2, "Databases Explanation", JOptionPane.INFORMATION_MESSAGE);
-                            JOptionPane.showMessageDialog(null, explanation3, "Databases Explanation", JOptionPane.INFORMATION_MESSAGE);
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
 
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == SpreadS) {
+                            String[] messages = {
+                                    "Databases and spreadsheets (such as Microsoft Excel) are both\n convenient ways too store information.",
+                                    "The primary differences between the two are:\n- How the data is stored and manipulated.\n- Who can access the data.\n- How much data can be stored.",
+                                };
+                            String title = "Database vs Spreadsheets";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == DML) {
+                            String[] messages = {
+                                    "Data manipulation language (DML) allows users to manipulate/manage\ndata in a database, such as Inserting Rows, Deleting, Merging, etc.",
+                                    "The SQL commands that deals with the manipulation of data\npresent in the database belong to DML.",
+                                    "List of DML commands include :\n- INSERT : it is used to insert data into a table.\n- UPDATE : It is used to update existing data within a table.\n- DELETE : It is used to delete records from a database tabel.\n- LOCK : Table control concurrency.",
+                                };
+                            String title = "Data Manipulation Language";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == DQL) {
+                            String[] messages = {
+                                    "Data Query Language statements are used for perfomring queries on the data.",
+                                    "Enables the user to retrieve required data from the database.",
+                                    "List of DQL commands include :\n- SELECT : It is used ot retrieve data from the database."
+                                };
+                            String title = "Data Query Language";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == DDL) {
+                            String[] messages = {
+                                    "Enables the user to create and modify the structure of objects in the database.",
+                                    "DDL actually consists of the SQL commands that can be used to define the database schema.",
+                                    "List of DML commands include :\n- CREATE : This command is used to create the database or its objetcs.\n(Table, index, function, views, store procedure, and triggers).\n- DROP : This command is used to delete objects from the database.\n- ALTER : This is used to alter the structure of the database.\n- TRUNCATE : This is used to remove all records from a table,\nincluding all spaces allocated for the records are removed.\n- COMMENT : This is used to add comments to the data dictionary.\n- RENAME : This is used to rename an object existing in the database.",
+                                };
+                            String title = "Data Description Language";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == Security) {
+                            String[] messages = {
+                                    "It is important that when dealing with databases the data\nintegrity and secutity is maintained in such a multi-user\nenvironment.",
+                                    "This means that we must ensure that data is not accidentally\nor intentionally corrupted.",
+                                    "Facilities must be available to ensure that in the event of\nsystem failure, no data is lost or corrupted and that the\ndatabase can quickly be restored.",
+                                    "A mechanism must be provided that protects a database\nfrom security threats such as unauthorized access to and\nunauthorized editing/deletion of data.",
+                                };
+                            String title = "Security";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -1639,22 +1895,32 @@ public class Essentials extends JFrame implements ActionListener{
                             "0 + 0 = 0\nA 0 OR'ed with itself is always equal to 0",
                             "1 + 1 = 1\nA 1 OR'ed with itself is always equal to 1",
                             "1 + 0 = 1\nA 1 OR'ed with a 0 is equal to 1",
-                            "/1 = 0\nThe Inverse(Complement) of a 1 is always equal to 0",
-                            "/0 = 1\nThe Inverse(Complement) of a 0 is always equal to 1"
+                            "1 = 0\nThe Inverse(Complement) of a 1 is always equal to 0",
+                            "0 = 1\nThe Inverse(Complement) of a 0 is always equal to 1"
                         };
                     String title = "Tautology";
                     int index = 0;
-                    while (index < messages.length) {
-                        int option = JOptionPane.showOptionDialog(null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"🡢", "🡠"}, "Next");
+
+                    while (true) {
+                        int option = JOptionPane.showOptionDialog(
+                                null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                new String[]{"🡠", "🡢"}, "Next"
+                            );
+
                         if (option == JOptionPane.CLOSED_OPTION) {
-                            // User closed the dialog, exit the loop
+                            // User closed the dialog
                             break;
-                        } else if (option == 0) {
-                            index++;
-                        } else if (option == 1 && index > 0) {
+                        } else if (option == 0 && index > 0) {
                             index--;
+                        } else if (option == 1) {
+                            if (index == messages.length - 1) {
+                                // If the user pressed "🡢" at the last message, do not increment index
+                                continue;
+                            } else {
+                                index++;
+                            }
                         }
-                    } 
+                    }
                 }
             }           
         }
@@ -1893,7 +2159,7 @@ public class Essentials extends JFrame implements ActionListener{
                             }   catch (NumberFormatException f) { 
                                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter an integer.");
                                 continue;
-                            }
+                            } 
                             // Calculate the maximum and minimum values
                             int maxValue = (int) Math.pow(2, bits - 1) - 1;  // maximum value is 2^(bits - 1) - 1
                             int minValue = -(int) Math.pow(2, bits - 1) + 1; // minimum value is -(2^(bits - 1)) + 1
