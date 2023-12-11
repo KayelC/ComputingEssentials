@@ -11,9 +11,12 @@ public class Essentials extends JFrame implements ActionListener{
     private JButton Module4;
     private SubMenuM4 subMenuM4;
 
+    private JButton Module7;
+    private SubMenuM7 subMenuM7;
+
     private JButton Module9;
     private SubMenuM9 subMenuM9;
-    
+
     private JButton Credits;
 
     public Essentials() {
@@ -28,9 +31,12 @@ public class Essentials extends JFrame implements ActionListener{
         Module4 = new JButton("Module 4");
         Module4.addActionListener(this);
 
+        Module7 = new JButton("Module 7");
+        Module7.addActionListener(this);
+
         Module9 = new JButton("Module 9");
         Module9.addActionListener(this);
-        
+
         Credits = new JButton("Credits");
         Credits.addActionListener(this);
 
@@ -39,6 +45,7 @@ public class Essentials extends JFrame implements ActionListener{
         buttonPanel.add(Module1);
         buttonPanel.add(Module2);
         buttonPanel.add(Module4);
+        buttonPanel.add(Module7);
         buttonPanel.add(Module9);
         buttonPanel.add(Credits);
 
@@ -65,13 +72,479 @@ public class Essentials extends JFrame implements ActionListener{
             subMenuM4.setVisible(true);
         } else if (e.getSource() == Credits) {
             String desc;
-            
-            desc = "Author : Kayel Calleja\nNotes : Dr Patrick Schembri, -Databases";
-            
+
+            desc = "Author : Kayel Calleja\nNotes : Dr Patrick Schembri, -Databases, -System Analysis and Design";
+
             JOptionPane.showMessageDialog(null, desc, "Credits", JOptionPane.INFORMATION_MESSAGE);
+        } else if (e.getSource() == Module7) {
+            subMenuM7 = new SubMenuM7();
+            subMenuM7.setVisible(true);
         }
     }
 
+    class SubMenuM7 extends JFrame implements ActionListener{
+        private JButton SAD;
+        private SubMenuSAD subMenuSAD;
+
+        private JButton LC;
+        private SubMenuLC subMenuLC;
+
+        public SubMenuM7(){
+            super("Module 7 Menu");
+
+            SAD = new JButton("System Analysis and Design");
+            SAD.addActionListener(this);
+
+            LC = new JButton("Life Cycle");
+            LC.addActionListener(this);
+
+            JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+            buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+            buttonPanel.add(SAD);
+            buttonPanel.add(LC);
+
+            getContentPane().setLayout(new BorderLayout());
+            getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+            setSize(400, 140);
+            setLocationRelativeTo(null);
+
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == SAD) {
+                subMenuSAD = new SubMenuSAD();
+                subMenuSAD.setVisible(true);
+            } else if (e.getSource() == LC) {
+                subMenuLC = new SubMenuLC();
+                subMenuLC.setVisible(true);
+            }
+        }     
+        class SubMenuSAD extends JFrame implements ActionListener{
+                    private JButton Analysis;
+                    private JButton Design;
+                    private JButton Analyst;
+                    private JButton Overview;
+
+                    public SubMenuSAD(){
+                        super ("System Analysis and Design Menu");
+
+                        Analysis = new JButton("Analysis");
+                        Analysis.addActionListener(this);
+
+                        Design = new JButton("Design");
+                        Design.addActionListener(this);
+
+                        Analyst = new JButton("Systems Analyst");
+                        Analyst.addActionListener(this);
+
+                        Overview = new JButton("Overview");
+                        Overview.addActionListener(this);
+
+                        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                        buttonPanel.add(Analysis);
+                        buttonPanel.add(Design);
+                        buttonPanel.add(Analyst);
+                        buttonPanel.add(Overview);
+
+                        getContentPane().setLayout(new BorderLayout());
+                        getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                        setSize(400, 140);
+                        setLocationRelativeTo(null);
+                    }
+
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource() == Analysis) {
+                            String[] messages = {
+                                    "System Analysis is the process of :\n- Investigating a system,\n- Identifying problems,\n- Using the information to recommend improvements to the system.",
+                                    "In simplest terms, the analysis specifies what the system should do, while\ndesign focuses on how to accomplish the objective of the system."
+                                };
+                            String title = "System Analysis";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == Design) {
+                            String[] messages = {
+                                    "System Design is the process of planning a new business system,\neither by replacing an old system completely or\nby updating and complementing the current system in order to improve upon it.",
+                                    "It is essential that before this stage can be done, the current, old system,\nneeds to be thoroughly investigated so that any limitations can be clearly identified.",
+                                    "Based on these limitations, the needed improvements can then be\ndesigned and it can be assessed whether the process can be made more effective.",
+                                };
+                            String title = "System Design";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == Analyst) {
+                            String[] messages = {
+                                    "The primary responsibility is to bridge the gap between business needs\n and the technical aspects of the system development.\n Some tasks include :",
+                                    "Requirements Gathering : Collecting and documenting detailed requirements\nfrom all stakeholders. Involves conducting interviews, surveys, etc.",
+                                    "Requirement Analysis : Analyse the gathered data to prioritize, resolve conflicts, etc.",
+                                    "System Design : Creating system models, such as DFD, ERD, etc.",
+                                    "Data Modelling : Designing the database schema, defining data structuresm etc.",
+                                    "Process Modelling : Model and document business processes to understand\nhow data and activites flow, for instance flowcharts.",
+                                    "Feasibility Analysis : Assess the feasibility of proposed systems,\n considering technical, operational, and economic factors.",
+                                    "System Testing : Test planning, test case development.",
+                                    "Documentation : Create various documentation, including system requirements,\ndocuments, user manuals."
+                                };
+                            String title = "System Analyst";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        } else if (e.getSource() == Overview) {
+                            String[] messages = {
+                                    "System Analysis and Design (SAD) is a broad term for describing\nmethodologies for developing high quality Information System.",
+                                    "A SAD methodology can also be referred to as a Systems Development\nLife Cycle (SDLC) that includes the development process as well as the\nongoing maintenance process.",
+                                    "The classic SAD methodology is the waterfall model which was originally\nconceived for the software development.",
+                                    "System Analysis and Design is the process whereby a business situation is\nexamined with the intent of improving and redesigning it completely\nthrough better procedures and methods.",
+                                    "System development usually have two major components :\n- System Analysis\n- System Design.",
+                                };
+                            String title = "Overview of the System";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+        class SubMenuLC extends JFrame implements ActionListener{
+            private JButton Stages;
+            private JButton Models;
+            private SubMenuLCM subMenuLCM;
+
+            public SubMenuLC(){
+                super("Life Cycle Menu");
+
+                Stages = new JButton("Stages of System Life Cycle");
+                Stages.addActionListener(this);
+
+                Models = new JButton("Life Cycle Models");
+                Models.addActionListener(this);
+
+                JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                buttonPanel.add(Stages);
+                buttonPanel.add(Models);
+
+                getContentPane().setLayout(new BorderLayout());
+                getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                setSize(400, 140);
+                setLocationRelativeTo(null);
+            }
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == Stages) {
+                    String[] messages = {
+                            "The System Life Cycle is the complete cycle of activies involved\nin the creation of a new or modified computer system.",
+                            "Each stage is composed of a certain well defined activites,\nand responsibilities, which must be completed before the next stage begins, following a linear, sequential approach.",
+                            "The System life cycle stages include :\n- Problem Definition\n- Feasibility Study\n- Requirements Elicitation\n- Analysis\n- Design\n- Implementation\n- Testing\n- Maintenance\n- Retirement",
+                        };
+                    String title = "Main Stages of System Life Cycle";
+                    int index = 0;
+
+                    while (true) {
+                        int option = JOptionPane.showOptionDialog(
+                                null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                new String[]{"🡠", "🡢"}, "Next"
+                            );
+
+                        if (option == JOptionPane.CLOSED_OPTION) {
+                            // User closed the dialog
+                            break;
+                        } else if (option == 0 && index > 0) {
+                            index--;
+                        } else if (option == 1) {
+                            if (index == messages.length - 1) {
+                                // If the user pressed "🡢" at the last message, do not increment index
+                                continue;
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                } else if (e.getSource() == Models) {
+                    subMenuLCM = new SubMenuLCM();
+                    subMenuLCM.setVisible(true);
+                }
+            }
+
+            class SubMenuLCM extends JFrame implements ActionListener{
+                private JButton Waterfall;
+                private SubMenuWM subMenuWM;
+
+                public SubMenuLCM(){
+                    super("Life Cycle Models Menu");
+
+                    Waterfall = new JButton("Waterfall");
+                    Waterfall.addActionListener(this);
+
+                    JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                    buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                    buttonPanel.add(Waterfall);
+
+                    getContentPane().setLayout(new BorderLayout());
+                    getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                    setSize(400, 140);
+                    setLocationRelativeTo(null);
+
+                }
+
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == Waterfall) {
+                        subMenuWM = new SubMenuWM();
+                        subMenuWM.setVisible(true);
+                    }
+                }
+
+                class SubMenuWM extends JFrame implements ActionListener{
+                    private JButton Generic;
+                    private JButton Stages;
+                    private JButton Adv;
+                    private JButton Dadv;
+
+                    public SubMenuWM(){
+                        super ("Waterfall Model Menu");
+
+                        Generic = new JButton("Generic");
+                        Generic.addActionListener(this);
+
+                        Stages = new JButton("Stages");
+                        Stages.addActionListener(this);
+
+                        Adv = new JButton("Advantages");
+                        Adv.addActionListener(this);
+
+                        Dadv = new JButton("Disadvantages");
+                        Dadv.addActionListener(this);
+
+                        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+                        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 7, 5, 7));
+                        buttonPanel.add(Generic);
+                        buttonPanel.add(Stages);
+                        buttonPanel.add(Adv);
+                        buttonPanel.add(Dadv);
+
+                        getContentPane().setLayout(new BorderLayout());
+                        getContentPane().add(buttonPanel, BorderLayout.CENTER);
+
+                        setSize(400, 140);
+                        setLocationRelativeTo(null);
+
+                    }
+                    public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() == Generic) {
+                        String[] messages = {
+                            "The Waterfall Model is a traditional and linear approach\nto software development and project management.",
+                            "It is characterized by a sequential and structured process with distinct\nphases, each of which must be completed before moving on to the next.",
+                            "The Waterfall Model is often used in situations where the project\nrequirements are well-defined and unlikely to change significantly\nduring the development process.",
+                            "In response to the percieved problems with the 'pure' waterfall model,\nmany modified waterfall models have been introduced.",
+                            "These models may address some or all of the critcisms of the 'pure' waterfall model."
+                        };
+                    String title = "Generic Watefall Model";
+                    int index = 0;
+    
+                    while (true) {
+                        int option = JOptionPane.showOptionDialog(
+                                null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                new String[]{"🡠", "🡢"}, "Next"
+                            );
+    
+                        if (option == JOptionPane.CLOSED_OPTION) {
+                            // User closed the dialog
+                            break;
+                        } else if (option == 0 && index > 0) {
+                            index--;
+                        } else if (option == 1) {
+                            if (index == messages.length - 1) {
+                                // If the user pressed "🡢" at the last message, do not increment index
+                                continue;
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                    } else if (e.getSource() == Stages) {
+                        String[] messages = {
+                            "Requirements Gathering and Analysis : The project team works closely\nwith stakeholders to gather and document detailed requirements.",
+                            "System Design : The system architecture, data structures, algorithms, and\n overall design are developed. The goal is to create a blueprint\nof the system's structure.",
+                            "Implementation (Coding) : Actual coding and programming of the system based on the design specifications.\nThis phase involves translating the design into executable code.",
+                            "Testing : The software is tested rigorously to identify and fix any defects or issues.\nSuch as unit testing, integration testing, system testing,\nand user acceptance testing.",
+                            "Deployment : Once the software is fully tested and approved,\nit is deployed to the production environment\nor delivered to the client for installation.",
+                            "Maintenance and Support : After deployment, the system enters the maintenance phase.\nIn this phase, ongoing support, bug fixes, updates,\nand enhancements are provided as needed."
+                        };
+                    String title = "Stages of the Waterfall Method";
+                    int index = 0;
+
+                    while (true) {
+                        int option = JOptionPane.showOptionDialog(
+                                null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                new String[]{"🡠", "🡢"}, "Next"
+                            );
+
+                        if (option == JOptionPane.CLOSED_OPTION) {
+                            // User closed the dialog
+                            break;
+                        } else if (option == 0 && index > 0) {
+                            index--;
+                        } else if (option == 1) {
+                            if (index == messages.length - 1) {
+                                // If the user pressed "🡢" at the last message, do not increment index
+                                continue;
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                    } else if (e.getSource() == Adv) {
+                        String[] messages = {
+                            "Clear Requirements : The Waterfall Model is most effective when project requirements are well-defined and unlikely to change.\nIt forces stakeholders to think through and document requirements thoroughly at the beginning of the project.",
+                            "Structured Approach : It provides a clear and structured approach to software\ndevelopment, with each phase having its own well-defined goals and deliverables.",
+                            "Easy to Manage : Project management is simplified because each phase must be completed\nbefore moving to the next, making it easier to track progress.",
+                            "Documentation : Extensive documentation is produced at each stage,\nmaking it easier for future maintenance and reference."
+                        };
+                    String title = "Advantages of the Waterfall Model";
+                    int index = 0;
+
+                    while (true) {
+                        int option = JOptionPane.showOptionDialog(
+                                null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                new String[]{"🡠", "🡢"}, "Next"
+                            );
+
+                        if (option == JOptionPane.CLOSED_OPTION) {
+                            // User closed the dialog
+                            break;
+                        } else if (option == 0 && index > 0) {
+                            index--;
+                        } else if (option == 1) {
+                            if (index == messages.length - 1) {
+                                // If the user pressed "🡢" at the last message, do not increment index
+                                continue;
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                    } else if (e.getSource() == Dadv) {
+                        String[] messages = {
+                            "Inflexibility : Inflexibility when it comes to accommodating changes in requirements.\nIf there is a change late in the project, it can be\nchallenging and expensive to implement.",
+                            "Long Delivery Time : Because each phase must be completed before moving on,\nit can result in longer delivery times, which may not be acceptable\nfor rapidly changing markets.",
+                            "Limited Stakeholder Involvement : Stakeholders are typically involved only at the beginning and the end of the project.\nThis limited involvement can lead to misunderstandings and dissatisfaction with the final product.",
+                            "High Risk : The risk is higher because the project's success depends heavily on\nthe accuracy and completeness of the initial requirements analysis.",
+                            "Not Suitable for Complex Projects : It may not be suitable for complex or\ninnovative projects where requirements are likely to change or are not\nwell understood at the outset.",
+                            "No Working Prototype Until Late : Clients don't see a working prototype until the later stages of the project, which means that any misunderstandings\nor misinterpretations of requirements are discovered late in the process.",
+                            "Customer Feedback : Limited customer feedback during development\ncan result in a product that doesn't fully meet the customer's needs and expectations.",
+                        };
+                    String title = "Disadvantages of the Waterfall Model";
+                    int index = 0;
+
+                    while (true) {
+                        int option = JOptionPane.showOptionDialog(
+                                null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                new String[]{"🡠", "🡢"}, "Next"
+                            );
+
+                        if (option == JOptionPane.CLOSED_OPTION) {
+                            // User closed the dialog
+                            break;
+                        } else if (option == 0 && index > 0) {
+                            index--;
+                        } else if (option == 1) {
+                            if (index == messages.length - 1) {
+                                // If the user pressed "🡢" at the last message, do not increment index
+                                continue;
+                            } else {
+                                index++;
+                            }
+                        }
+                    }
+                    }
+                }
+                }  
+
+                
+
+            }
+        }
+    }
     class SubMenuM4 extends JFrame implements ActionListener{
         private JButton OS;
         private SubMenuOS subMenuOS;
@@ -1332,13 +1805,13 @@ public class Essentials extends JFrame implements ActionListener{
 
                         DML = new JButton("Data Manipulation Language");
                         DML.addActionListener(this);
-                        
+
                         DQL = new JButton("Data Query Language");
                         DQL.addActionListener(this);
-                        
+
                         DDL = new JButton("Data Description Language");
                         DDL.addActionListener(this);
-                        
+
                         Security = new JButton("Security");
                         Security.addActionListener(this);
 
@@ -1352,7 +1825,7 @@ public class Essentials extends JFrame implements ActionListener{
                         buttonPanel.add(DQL);
                         buttonPanel.add(DDL);
                         buttonPanel.add(Security);
-                        
+
                         getContentPane().setLayout(new BorderLayout());
                         getContentPane().add(buttonPanel, BorderLayout.CENTER);
 

@@ -1,0 +1,26 @@
+String[] messages = {
+                                    "",
+                                };
+                            String title = "Database";
+                            int index = 0;
+
+                            while (true) {
+                                int option = JOptionPane.showOptionDialog(
+                                        null, messages[index], title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                                        new String[]{"🡠", "🡢"}, "Next"
+                                    );
+
+                                if (option == JOptionPane.CLOSED_OPTION) {
+                                    // User closed the dialog
+                                    break;
+                                } else if (option == 0 && index > 0) {
+                                    index--;
+                                } else if (option == 1) {
+                                    if (index == messages.length - 1) {
+                                        // If the user pressed "🡢" at the last message, do not increment index
+                                        continue;
+                                    } else {
+                                        index++;
+                                    }
+                                }
+                            }
